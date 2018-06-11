@@ -16,9 +16,10 @@ using VS.DLQ.EntityFrameworkCore;
 namespace VS.DLQ.Migrations
 {
     [DbContext(typeof(DLQDbContext))]
-    partial class DLQDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180611142054_Add_Species_and_Rules_Tables")]
+    partial class Add_Species_and_Rules_Tables
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
