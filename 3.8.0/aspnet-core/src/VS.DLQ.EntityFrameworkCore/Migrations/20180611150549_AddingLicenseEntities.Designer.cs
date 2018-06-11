@@ -16,9 +16,10 @@ using VS.DLQ.EntityFrameworkCore;
 namespace VS.DLQ.Migrations
 {
     [DbContext(typeof(DLQDbContext))]
-    partial class DLQDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180611150549_AddingLicenseEntities")]
+    partial class AddingLicenseEntities
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
