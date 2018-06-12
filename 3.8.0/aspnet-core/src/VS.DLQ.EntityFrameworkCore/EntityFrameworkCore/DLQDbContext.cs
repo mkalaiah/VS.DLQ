@@ -10,12 +10,17 @@ using VS.DLQ.LicenseImages;
 using VS.DLQ.Entitlements;
 using VS.DLQ.LicenseTypeEntitlements;
 using VS.DLQ.UserLicenses;
+using VS.DLQ.UserEmails;
 
 namespace VS.DLQ.EntityFrameworkCore
 {
     public class DLQDbContext : AbpZeroDbContext<Tenant, Role, User, DLQDbContext>
     {
         /* Define a DbSet for each entity of the application */
+        //User Related Entities
+       // public DbSet<UserEmail> UserEmail { get; set; }
+        
+        //License Related Entities
         public DbSet<LicenseType> LicensesType { get; set; }
         public DbSet<LicenseStatus> LicenseStatus { get; set; }
         public DbSet<License> License { get; set; }
