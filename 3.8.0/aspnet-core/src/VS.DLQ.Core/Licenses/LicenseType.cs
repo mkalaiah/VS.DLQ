@@ -3,10 +3,10 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Abp.Domain.Entities;
 
-namespace VS.DLQ.LicenseStatuses
+namespace VS.DLQ.Licenses
 {
-    [Table("DLQLicenseStatuses")]
-    public class LicenseStatus : Entity<long>
+    [Table("DLQLicenseTypes")]
+    public class LicenseType : Entity<long>
     {
         [Required]
         [MaxLength(DLQConsts.MaxNameLength)]
@@ -18,7 +18,7 @@ namespace VS.DLQ.LicenseStatuses
 
         public DateTime TimeStamp { get; set; }
 
-        public LicenseStatus()
+        public LicenseType()
         {
             TimeStamp = DateTime.Now;
         }

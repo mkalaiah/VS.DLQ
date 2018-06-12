@@ -2,9 +2,8 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using Abp.Domain.Entities;
 using VS.DLQ.Entitlements;
-using VS.DLQ.LicenseTypes;
 
-namespace VS.DLQ.LicenseTypeEntitlements
+namespace VS.DLQ.Licenses
 {
     [Table("DLQLicenseTypeEntitlements")]
     public class LicenseTypeEntitlement : Entity
