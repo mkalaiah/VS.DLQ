@@ -3,7 +3,6 @@ using Abp.Zero.EntityFrameworkCore;
 using VS.DLQ.Authorization.Roles;
 using VS.DLQ.Authorization.Users;
 using VS.DLQ.MultiTenancy;
-<<<<<<< HEAD
 using VS.DLQ.LicenseTypes;
 using VS.DLQ.LicenseStatuses;
 using VS.DLQ.Licenses;
@@ -12,17 +11,16 @@ using VS.DLQ.Entitlements;
 using VS.DLQ.LicenseTypeEntitlements;
 using VS.DLQ.UserLicenses;
 using VS.DLQ.UserEmails;
-=======
 using VS.DLQ.Fish;
 using VS.DLQ.Rules;
->>>>>>> f7f284269541841737109fd19877c643c438ceab
+using VS.DLQ.Engagement;
 
 namespace VS.DLQ.EntityFrameworkCore
 {
     public class DLQDbContext : AbpZeroDbContext<Tenant, Role, User, DLQDbContext>
     {
         /* Define a DbSet for each entity of the application */
-<<<<<<< HEAD
+
         //User Related Entities
        // public DbSet<UserEmail> UserEmail { get; set; }
         
@@ -34,10 +32,9 @@ namespace VS.DLQ.EntityFrameworkCore
         public DbSet<Entitlement> Entitlement { get; set; }
         public DbSet<LicenseTypeEntitlement> LicenseTypeEntitlement { get; set; }
         public DbSet<UserLicense> UserLicense { get; set; }
-=======
         public virtual DbSet<Species> Species { get; set; }
         public virtual DbSet<Rule> Rules { get; set; }
->>>>>>> f7f284269541841737109fd19877c643c438ceab
+        public virtual DbSet<Query> Queries { get; set; }
 
         public DLQDbContext(DbContextOptions<DLQDbContext> options)
             : base(options)
