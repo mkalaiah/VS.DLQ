@@ -41,8 +41,8 @@ namespace VS.DLQ.EntityFrameworkCore
         public DbSet<UserLicense> UserLicense { get; set; }
 
         //Fish Related Entities
-        //public virtual DbSet<Species> Species { get; set; }
-        //public virtual DbSet<Rule> Rules { get; set; }
+        public virtual DbSet<Species> Species { get; set; }
+        public virtual DbSet<Rule> Rules { get; set; }
 
         //Engagements Related Entites
         public DbSet<Query> Queries { get; set; }
