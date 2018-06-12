@@ -1,4 +1,4 @@
-﻿import { Component, Injector, ViewEncapsulation } from '@angular/core';
+import { Component, Injector, ViewEncapsulation } from '@angular/core';
 import { AppComponentBase } from '@shared/app-component-base';
 import { MenuItem } from '@shared/layout/menu-item';
 
@@ -16,7 +16,7 @@ export class SideBarNavComponent extends AppComponentBase {
         new MenuItem(this.l("Users"), "Pages.Users", "people", "/app/users"),
         new MenuItem(this.l("Roles"), "Pages.Roles", "local_offer", "/app/roles"),
         new MenuItem(this.l("About"), "", "info", "/app/about"),
-
+        /*
         new MenuItem(this.l("MultiLevelMenu"), "", "menu", "", [
             new MenuItem("ASP.NET Boilerplate", "", "", "", [
                 new MenuItem("Home", "", "", "https://aspnetboilerplate.com/?ref=abptmpl"),
@@ -32,6 +32,11 @@ export class SideBarNavComponent extends AppComponentBase {
                 new MenuItem("Faq", "", "", "https://aspnetzero.com/Faq?ref=abptmpl"),
                 new MenuItem("Documents", "", "", "https://aspnetzero.com/Documents?ref=abptmpl")
             ])
+        ])*/
+
+        new MenuItem(this.l("Engagement"), "", "menu", "", [
+            new MenuItem("Ask a Question", "", "", "/app/question"),
+            new MenuItem("Report Illegal Actvities", "", "", "/app/report-illegal")
         ])
     ];
 
