@@ -1,17 +1,17 @@
-﻿using Abp.Domain.Entities;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Text;
+using Abp.Domain.Entities;
+using VS.DLQ.Authorization.Users;
 
 namespace VS.DLQ.Engagement
 {
     [Table("DLQQueries")]
     public class Query : Entity
     {
-        [ForeignKey("Users")]
-        public virtual int UserId { get; set; }
+        [ForeignKey("UserId")]
+        public virtual User User { get; protected set; }
+        public virtual long UserId { get; protected set; }      
 
         [Required]
         public virtual string UserName { get; set; }

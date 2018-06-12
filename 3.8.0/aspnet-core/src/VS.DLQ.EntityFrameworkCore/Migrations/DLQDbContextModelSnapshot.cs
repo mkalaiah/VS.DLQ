@@ -990,6 +990,88 @@ namespace VS.DLQ.Migrations
                     b.ToTable("AbpUsers");
                 });
 
+            modelBuilder.Entity("VS.DLQ.Engagement.Query", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("EmailId")
+                        .IsRequired();
+
+                    b.Property<bool>("IsReplied");
+
+                    b.Property<string>("Question")
+                        .IsRequired();
+
+                    b.Property<string>("Response");
+
+                    b.Property<DateTime>("ResponseTimeStamp");
+
+                    b.Property<DateTime>("TimeStamp");
+
+                    b.Property<long>("UserId");
+
+                    b.Property<string>("UserName")
+                        .IsRequired();
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("DLQQueries");
+                });
+
+            modelBuilder.Entity("VS.DLQ.Engagement.ReportIllegalActivity", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Description")
+                        .HasMaxLength(255);
+
+                    b.Property<DateTime>("IllegalActivityDate");
+
+                    b.Property<DateTime>("TimeStamp");
+
+                    b.Property<long>("UserId");
+
+                    b.Property<string>("UserName")
+                        .IsRequired()
+                        .HasMaxLength(100);
+
+                    b.Property<string>("VesselNo")
+                        .IsRequired();
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("DLQReportIllegalActivities");
+                });
+
+            modelBuilder.Entity("VS.DLQ.Engagement.ReportIssue", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("IssueDescription")
+                        .IsRequired();
+
+                    b.Property<DateTime>("TimeStamp");
+
+                    b.Property<long>("UserId");
+
+                    b.Property<string>("UserName")
+                        .IsRequired()
+                        .HasMaxLength(100);
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("DLQReportIssues");
+                });
+
             modelBuilder.Entity("VS.DLQ.Entitlements.Entitlement", b =>
                 {
                     b.Property<long>("Id")
@@ -1010,142 +1092,118 @@ namespace VS.DLQ.Migrations
                     b.ToTable("DLQEntitlements");
                 });
 
-
             modelBuilder.Entity("VS.DLQ.LicenseImages.LicenseImage", b =>
-            {
-            b.Property<int>("Id")
-                .ValueGeneratedOnAdd();
-
-            b.Property<string>("Description")
-                .IsRequired()
-                .HasMaxLength(255);
-
-                b.Property<long>("LicenseId");
-
-                b.Property<byte[]>("Name")
-                    .IsRequired()
-                    .HasMaxLength(100);
-
-                b.Property<DateTime>("TimeStamp");
-
-                b.HasKey("Id");
-
-                b.HasIndex("LicenseId");
-
-                b.ToTable("DLQLicenseImages");
-            });
-
-            modelBuilder.Entity("VS.DLQ.Licenses.License", b =>
-            {
-                b.Property<long>("Id")
-                    .ValueGeneratedOnAdd();
-
-                b.Property<DateTime>("IssueDate");
-
-                b.Property<string>("LicenseNumber");
-
-                b.Property<long>("LicenseStatusId");
-
-                b.Property<long>("LicenseTypeId");
-
-                b.Property<string>("SubVersion");
-
-                b.Property<DateTime>("TimeStamp");
-
-                b.Property<DateTime>("ValidTill");
-
-                b.Property<string>("Version");
-
-                b.HasKey("Id");
-
-                b.HasIndex("LicenseStatusId");
-
-                b.HasIndex("LicenseTypeId");
-
-                b.ToTable("DLQLicenses");
-            });
-
-            modelBuilder.Entity("VS.DLQ.LicenseStatuses.LicenseStatus", b =>
-            {
-                b.Property<long>("Id")
-                    .ValueGeneratedOnAdd();
-
-                b.Property<string>("Description")
-                    .IsRequired()
-                    .HasMaxLength(255);
-
-                b.Property<string>("Name")
-                    .IsRequired()
-                    .HasMaxLength(100);
-
-                b.Property<DateTime>("TimeStamp");
-
-                b.HasKey("Id");
-
-                b.ToTable("DLQLicenseStatuses");
-            });
-
-            modelBuilder.Entity("VS.DLQ.LicenseTypeEntitlements.LicenseTypeEntitlement", b =>
-            {
-                b.Property<int>("Id")
-                    .ValueGeneratedOnAdd();
-
-                b.Property<long>("EntitlementId");
-
-                b.Property<long>("LicenseTypeId");
-
-                b.Property<DateTime>("TimeStamp");
-
-                b.HasKey("Id");
-
-                b.HasIndex("EntitlementId");
-
-                b.HasIndex("LicenseTypeId");
-
-                b.ToTable("DLQLicenseTypeEntitlements");
-            });
-
-            modelBuilder.Entity("VS.DLQ.LicenseTypes.LicenseType", b =>
-            {
-                b.Property<long>("Id")
-                    .ValueGeneratedOnAdd();
-
-                b.Property<string>("Description")
-                    .IsRequired()
-                    .HasMaxLength(255);
-
-                b.Property<string>("Name")
-                    .IsRequired()
-                    .HasMaxLength(100);
-
-                b.Property<DateTime>("TimeStamp");
-
-                b.HasKey("Id");
-
-                b.ToTable("DLQLicenseTypes");
-            });
-            modelBuilder.Entity("VS.DLQ.Fish.Species", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasMaxLength(100);
+                        .HasMaxLength(255);
 
-                    b.Property<string>("Name")
+                    b.Property<long>("LicenseId");
+
+                    b.Property<byte[]>("Name")
                         .IsRequired()
-                        .HasMaxLength(64);
+                        .HasMaxLength(100);
 
                     b.Property<DateTime>("TimeStamp");
 
-                    b.Property<string>("URL")
-                        .IsRequired()
-                        .HasMaxLength(100);
+                    b.HasKey("Id");
+
+                    b.HasIndex("LicenseId");
+
+                    b.ToTable("DLQLicenseImages");
+                });
+
+            modelBuilder.Entity("VS.DLQ.Licenses.License", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime>("IssueDate");
+
+                    b.Property<string>("LicenseNumber");
+
+                    b.Property<long>("LicenseStatusId");
+
+                    b.Property<long>("LicenseTypeId");
+
+                    b.Property<string>("SubVersion");
+
+                    b.Property<DateTime>("TimeStamp");
+
+                    b.Property<DateTime>("ValidTill");
+
+                    b.Property<string>("Version");
 
                     b.HasKey("Id");
 
-                    b.ToTable("DLQSpecies");
+                    b.HasIndex("LicenseStatusId");
+
+                    b.HasIndex("LicenseTypeId");
+
+                    b.ToTable("DLQLicenses");
+                });
+
+            modelBuilder.Entity("VS.DLQ.LicenseStatuses.LicenseStatus", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(255);
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(100);
+
+                    b.Property<DateTime>("TimeStamp");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("DLQLicenseStatuses");
+                });
+
+            modelBuilder.Entity("VS.DLQ.LicenseTypeEntitlements.LicenseTypeEntitlement", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<long>("EntitlementId");
+
+                    b.Property<long>("LicenseTypeId");
+
+                    b.Property<DateTime>("TimeStamp");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EntitlementId");
+
+                    b.HasIndex("LicenseTypeId");
+
+                    b.ToTable("DLQLicenseTypeEntitlements");
+                });
+
+            modelBuilder.Entity("VS.DLQ.LicenseTypes.LicenseType", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(255);
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(100);
+
+                    b.Property<DateTime>("TimeStamp");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("DLQLicenseTypes");
                 });
 
             modelBuilder.Entity("VS.DLQ.MultiTenancy.Tenant", b =>
@@ -1197,48 +1255,149 @@ namespace VS.DLQ.Migrations
                     b.ToTable("AbpTenants");
                 });
 
-            modelBuilder.Entity("VS.DLQ.UserLicenses.UserLicense", b =>
-            {
-                b.Property<int>("Id")
-                    .ValueGeneratedOnAdd();
-                b.Property<long>("LicenseId");
-
-                b.Property<DateTime>("TimeStamp");
-
-                b.Property<long>("UserId");
-
-                b.HasKey("Id");
-
-                b.HasIndex("LicenseId");
-
-                b.HasIndex("UserId");
-
-                b.ToTable("DLQUserLicenses");
-            });
-
-            modelBuilder.Entity("VS.DLQ.Rules.Rule", b =>
-            {
-                    b.Property<int>("Id")
+            modelBuilder.Entity("VS.DLQ.MyTrips.MyTrip", b =>
+                {
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("Description")
-                        .IsRequired()
-                        .HasMaxLength(100);
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(64);
+                        .HasMaxLength(255);
 
                     b.Property<DateTime>("TimeStamp");
 
-                    b.Property<string>("URL")
+                    b.Property<string>("Title")
                         .IsRequired()
                         .HasMaxLength(100);
 
+                    b.Property<DateTime>("TripDate");
+
+                    b.Property<long>("UserId");
+
                     b.HasKey("Id");
 
-                    b.ToTable("DLQRules");
-            });
+                    b.HasIndex("UserId");
+
+                    b.ToTable("DLQMyTrips");
+                });
+
+            modelBuilder.Entity("VS.DLQ.MyTrips.MyTripImage", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<byte[]>("Image");
+
+                    b.Property<long>("MyTripId");
+
+                    b.Property<DateTime>("TimeStamp");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MyTripId");
+
+                    b.ToTable("DLQMyTripImages");
+                });
+
+            modelBuilder.Entity("VS.DLQ.SocialStatuses.SocialStatus", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Status")
+                        .IsRequired();
+
+                    b.Property<DateTime>("TimeStamp");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("DLQSocialStatuses");
+                });
+
+            modelBuilder.Entity("VS.DLQ.UserAddresses.UserAddress", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<bool>("IsCorrespondence");
+
+                    b.Property<bool>("IsPrimary");
+
+                    b.Property<long>("PostCode");
+
+                    b.Property<string>("State");
+
+                    b.Property<string>("StreetNumberAndName");
+
+                    b.Property<string>("Suburb");
+
+                    b.Property<DateTime>("TimeStamp");
+
+                    b.Property<long>("UnitNumber");
+
+                    b.Property<long>("UserId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("DLQUserAddresses");
+                });
+
+            modelBuilder.Entity("VS.DLQ.UserEmails.UserEmail", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Email");
+
+                    b.Property<long>("UserId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("DLQUserEmails");
+                });
+
+            modelBuilder.Entity("VS.DLQ.UserLicenses.UserLicense", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<long>("LicenseId");
+
+                    b.Property<DateTime>("TimeStamp");
+
+                    b.Property<long>("UserId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("LicenseId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("DLQUserLicenses");
+                });
+
+            modelBuilder.Entity("VS.DLQ.UserProfiles.UserProfile", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime>("DateOfBirth");
+
+                    b.Property<string>("SocialStatus");
+
+                    b.Property<DateTime>("TimeStamp");
+
+                    b.Property<long>("UserId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("DLQUserProfiles");
+                });
 
             modelBuilder.Entity("Abp.Application.Features.EditionFeatureSetting", b =>
                 {
@@ -1391,6 +1550,30 @@ namespace VS.DLQ.Migrations
                         .HasForeignKey("LastModifierUserId");
                 });
 
+            modelBuilder.Entity("VS.DLQ.Engagement.Query", b =>
+                {
+                    b.HasOne("VS.DLQ.Authorization.Users.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("VS.DLQ.Engagement.ReportIllegalActivity", b =>
+                {
+                    b.HasOne("VS.DLQ.Authorization.Users.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("VS.DLQ.Engagement.ReportIssue", b =>
+                {
+                    b.HasOne("VS.DLQ.Authorization.Users.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
             modelBuilder.Entity("VS.DLQ.LicenseImages.LicenseImage", b =>
                 {
                     b.HasOne("VS.DLQ.Licenses.License", "License")
@@ -1444,6 +1627,38 @@ namespace VS.DLQ.Migrations
                         .HasForeignKey("LastModifierUserId");
                 });
 
+            modelBuilder.Entity("VS.DLQ.MyTrips.MyTrip", b =>
+                {
+                    b.HasOne("VS.DLQ.Authorization.Users.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("VS.DLQ.MyTrips.MyTripImage", b =>
+                {
+                    b.HasOne("VS.DLQ.MyTrips.MyTrip", "MyTrips")
+                        .WithMany()
+                        .HasForeignKey("MyTripId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("VS.DLQ.UserAddresses.UserAddress", b =>
+                {
+                    b.HasOne("VS.DLQ.Authorization.Users.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("VS.DLQ.UserEmails.UserEmail", b =>
+                {
+                    b.HasOne("VS.DLQ.Authorization.Users.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
             modelBuilder.Entity("VS.DLQ.UserLicenses.UserLicense", b =>
                 {
                     b.HasOne("VS.DLQ.Licenses.License", "License")
@@ -1451,6 +1666,14 @@ namespace VS.DLQ.Migrations
                         .HasForeignKey("LicenseId")
                         .OnDelete(DeleteBehavior.Cascade);
 
+                    b.HasOne("VS.DLQ.Authorization.Users.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("VS.DLQ.UserProfiles.UserProfile", b =>
+                {
                     b.HasOne("VS.DLQ.Authorization.Users.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId")

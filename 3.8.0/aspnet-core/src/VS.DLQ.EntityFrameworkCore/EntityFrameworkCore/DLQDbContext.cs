@@ -14,6 +14,10 @@ using VS.DLQ.UserEmails;
 using VS.DLQ.Fish;
 using VS.DLQ.Rules;
 using VS.DLQ.Engagement;
+using VS.DLQ.UserProfiles;
+using VS.DLQ.UserAddresses;
+using VS.DLQ.SocialStatuses;
+using VS.DLQ.MyTrips;
 
 namespace VS.DLQ.EntityFrameworkCore
 {
@@ -22,8 +26,11 @@ namespace VS.DLQ.EntityFrameworkCore
         /* Define a DbSet for each entity of the application */
 
         //User Related Entities
-       // public DbSet<UserEmail> UserEmail { get; set; }
-        
+        public DbSet<UserEmail> UserEmails { get; set; }
+        public DbSet<UserAddress> UserAddresses { get; set; }
+        public DbSet<UserProfile> UserProfiles { get; set; }
+        public DbSet<SocialStatus> SocialStatuses { get; set; }
+
         //License Related Entities
         public DbSet<LicenseType> LicensesType { get; set; }
         public DbSet<LicenseStatus> LicenseStatus { get; set; }
@@ -32,9 +39,19 @@ namespace VS.DLQ.EntityFrameworkCore
         public DbSet<Entitlement> Entitlement { get; set; }
         public DbSet<LicenseTypeEntitlement> LicenseTypeEntitlement { get; set; }
         public DbSet<UserLicense> UserLicense { get; set; }
-        public virtual DbSet<Species> Species { get; set; }
-        public virtual DbSet<Rule> Rules { get; set; }
-        public virtual DbSet<Query> Queries { get; set; }
+
+        //Fish Related Entities
+        //public virtual DbSet<Species> Species { get; set; }
+        //public virtual DbSet<Rule> Rules { get; set; }
+
+        //Engagements Related Entites
+        public DbSet<Query> Queries { get; set; }
+        public DbSet<ReportIllegalActivity> ReportIllegalActivities { get; set; }
+        public DbSet<ReportIssue> ReportIssues { get; set; }
+
+        //Trip Related Entities
+        public DbSet<MyTrip> MyTrips { get; set; }
+        public DbSet<MyTripImage> MyTripImages { get; set; }
 
         public DLQDbContext(DbContextOptions<DLQDbContext> options)
             : base(options)

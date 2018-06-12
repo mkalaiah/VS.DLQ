@@ -8,6 +8,14 @@
     <GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Remove="Migrations\20180612124030_UserRelatedEntites_Added.cs" />
+    <Compile Remove="Migrations\20180612125153_UserRelatedEntites_Added.cs" />
+    <Compile Remove="Migrations\20180612125545_UserRelatedEntites_Added.cs" />
+    <Compile Remove="Migrations\20180612125650_UserRelatedEntites_Added.cs" />
+    <Compile Remove="Migrations\20180612132220_MyTripEntites_Added.cs" />
+    <Compile Remove="Migrations\20180612132513_MyTripEntites_Added.cs" />
+  </ItemGroup>
+  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.0.3" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.0.3" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="2.0.3" />
