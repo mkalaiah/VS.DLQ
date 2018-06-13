@@ -4,7 +4,7 @@ import { appModuleAnimation } from '@shared/animations/routerTransition';
 //import { HttpClient } from '@angular/common/http';
 
 @Component({
-    templateUrl: './report-illegal-activities.component.html',
+    templateUrl: './reportillegalactivities.component.html',
     animations: [appModuleAnimation()]
 })
 
