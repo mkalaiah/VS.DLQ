@@ -5,9 +5,9 @@ using Abp.Application.Services.Dto;
 using VS.DLQ.Engagement;
 
 namespace VS.DLQ.Queries.Dto
-{
+{    
     [AutoMapTo(typeof(Query))]
-    public class CreateQueryDto
+    public class QueryDto : EntityDto<long>
     {
         public virtual long UserId { get; set; }
 
@@ -29,4 +29,3 @@ namespace VS.DLQ.Queries.Dto
         public virtual DateTime ResponseTimeStamp { get; set; }
     }
 }
-
