@@ -11,6 +11,7 @@ namespace VS.DLQ.EntityFrameworkCore.Seed.Host
     public class DefaultSpicesCreator
     {
         private readonly DLQDbContext _context;
+        private const string Name = "Australian bass";
 
         public DefaultSpicesCreator(DLQDbContext context)
         {
@@ -19,7 +20,11 @@ namespace VS.DLQ.EntityFrameworkCore.Seed.Host
 
         public void Create()
         {
-            CreateSpecies();
+            var defaultSpecies = _context.Rules.IgnoreQueryFilters().FirstOrDefault(e => e.Name.Trim() == Name.Trim());
+            if (defaultSpecies == null)
+            {
+                CreateSpecies();
+            }
         }
 
         private void CreateSpecies()
@@ -42,7 +47,7 @@ namespace VS.DLQ.EntityFrameworkCore.Seed.Host
                 new Species { Name = "Khaki grunter", URL = "https://www.daf.qld.gov.au/business-priorities/fisheries/species-identification/freshwater-fish/khaki-grunter", Description = "Khaki grunter", TimeStamp = DateTime.Now },
                 new Species { Name = "Longfin eel", URL = "https://www.daf.qld.gov.au/business-priorities/fisheries/species-identification/freshwater-fish/longfin-eel", Description = "Longfin eel", TimeStamp = DateTime.Now }
                 );
-            _context.SaveChanges();            
+            _context.SaveChanges();
         }
     }
 }

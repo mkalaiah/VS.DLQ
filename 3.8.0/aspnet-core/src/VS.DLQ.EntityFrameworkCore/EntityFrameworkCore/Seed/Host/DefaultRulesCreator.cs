@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using Microsoft.EntityFrameworkCore;
 using VS.DLQ.Rules;
 
 namespace VS.DLQ.EntityFrameworkCore.Seed.Host
@@ -8,6 +10,7 @@ namespace VS.DLQ.EntityFrameworkCore.Seed.Host
     public class DefaultRulesCreator
     {
         private readonly DLQDbContext _context;
+        private const string Name = "Fishing Equipment";
 
         public DefaultRulesCreator(DLQDbContext context)
         {
@@ -16,10 +19,14 @@ namespace VS.DLQ.EntityFrameworkCore.Seed.Host
 
         public void Create()
         {
-            CreateSpecies();
+            var defaultRules = _context.Species.IgnoreQueryFilters().FirstOrDefault(e => e.Name.Trim() == Name.Trim());
+            if (defaultRules == null)
+            {
+                CreateRules();
+            }
         }
 
-        private void CreateSpecies()
+        private void CreateRules()
         {
             _context.Rules.AddRange(
                 new Rule { Name = "Fishing Equipment", URL = "https://www.qld.gov.au/recreation/activities/boating-fishing/rec-fishing/rules/equipment", Description = "Fishing Equipment", TimeStamp = DateTime.Now },
