@@ -36,7 +36,7 @@ export class QuestionComponent extends AppComponentBase implements AfterViewInit
         this._questionService.submit(this.model)
             .finally(() => { this.saving = false; })
             .subscribe((result: QuestionOutput) => {
-                if (!result.message.match('success')) {
+                if (result.message.match('success')) {
                     this.notify.success(this.l('SuccessfullySubmitted'));
                     return;
                 }
