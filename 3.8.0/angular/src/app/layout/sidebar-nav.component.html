@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-﻿<div class="menu">
-=======
 <div class="menu">
->>>>>>> 8f91001433374c7ef36ddc6903d0ebd71189008d
     <ul class="list">
         <ng-template ngFor let-menuItem [ngForOf]="menuItems" let-mainMenuItemIndex="index">
             <li *ngIf="showMenuItem(menuItem)" routerLinkActive="active">
@@ -29,36 +25,6 @@
                                 <i *ngIf="subMenuItem.icon" class="material-icons">{{subMenuItem.icon}}</i>
                                 <span>{{subMenuItem.name}}</span>
                             </a>
-<<<<<<< HEAD
-                            <!-- Static link (starts with 'http') -->
-                            <a href="{{subMenuItem.route}}" class="toggled" target="_blank" *ngIf="!subMenuItem.items.length && subMenuItem.route.indexOf('http') == 0">
-                                <i *ngIf="subMenuItem.icon" class="material-icons">{{subMenuItem.icon}}</i>
-                                <span>{{subMenuItem.name}}</span>
-                            </a>
-                            <!-- Has child menu items (so, this is a parent menu) -->
-                            <a href="javascript:void(0);" [ngClass]="{'menu-toggle': subMenuItem.items.length}" *ngIf="menuItem.items.length">
-                                <i *ngIf="subMenuItem.icon" class="material-icons">{{subMenuItem.icon}}</i>
-                                <span>{{subMenuItem.name}}</span>
-                            </a>
-                            <ul class="ml-menu" *ngIf="subMenuItem.items.length">
-                                <ng-template ngFor let-subSubMenuItem [ngForOf]="subMenuItem.items" let-mainMenuItemIndex="index">
-                                    <li *ngIf="showMenuItem(subSubMenuItem)" routerLinkActive="active">
-                                        <!-- route name -->
-                                        <a [routerLink]="[subSubMenuItem.route]" *ngIf="subSubMenuItem.route.indexOf('http') != 0">
-                                            <i *ngIf="subSubMenuItem.icon" class="material-icons">{{subSubMenuItem.icon}}</i>
-                                            <span>{{subSubMenuItem.name}}</span>
-                                        </a>
-                                        <!-- Static link (starts with 'http') -->
-                                        <a href="{{subSubMenuItem.route}}" target="_blank" *ngIf="subSubMenuItem.route.indexOf('http') == 0">
-                                            <i *ngIf="subSubMenuItem.icon" class="material-icons">{{subSubMenuItem.icon}}</i>
-                                            <span>{{subSubMenuItem.name}}</span>
-                                        </a>
-                                    </li>
-                                </ng-template>
-                            </ul>
-=======
-                            
->>>>>>> 8f91001433374c7ef36ddc6903d0ebd71189008d
                         </li>
                     </ng-template>
                 </ul>

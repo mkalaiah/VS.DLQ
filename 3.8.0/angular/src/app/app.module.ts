@@ -33,13 +33,9 @@ import { SideBarNavComponent } from '@app/layout/sidebar-nav.component';
 import { SideBarFooterComponent } from '@app/layout/sidebar-footer.component';
 import { RightSideBarComponent } from '@app/layout/right-sidebar.component';
 import { MaterialInput } from '@shared/directives/material-input.directive';
-
-<<<<<<< HEAD
-=======
 import { QuestionComponent } from '@app/question/question.component';
-import { ReportIllegalComponent } from '@app/reportillegal/report-illegal-activities.component';
+import { ReportIllegalComponent } from '@app/reportillegal/reportillegalactivities.component';
 
->>>>>>> 8f91001433374c7ef36ddc6903d0ebd71189008d
 @NgModule({
     declarations: [
         AppComponent,
@@ -59,14 +55,10 @@ import { ReportIllegalComponent } from '@app/reportillegal/report-illegal-activi
         SideBarUserAreaComponent,
         SideBarNavComponent,
         SideBarFooterComponent,
-<<<<<<< HEAD
-        RightSideBarComponent
-    
-=======
         RightSideBarComponent,
         QuestionComponent,
         ReportIllegalComponent
->>>>>>> 8f91001433374c7ef36ddc6903d0ebd71189008d
+    
     ],
     imports: [
         CommonModule,
