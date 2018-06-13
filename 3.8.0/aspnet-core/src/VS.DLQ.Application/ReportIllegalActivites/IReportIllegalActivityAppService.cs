@@ -1,0 +1,11 @@
+﻿using System.Threading.Tasks;
+using Abp.Application.Services;
+using VS.DLQ.ReportIllegalActivites.Dto;
+
+namespace VS.DLQ.ReportIllegalActivites
+{
+    public interface IReportIllegalActivityAppService: IApplicationService
+    {
+        Task CreateAsync(CreateReportIllegalActivityDto input);
+    }
+}

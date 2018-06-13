@@ -6,6 +6,6 @@ namespace VS.DLQ.Queries
 {
     public interface IQueryAppService: IApplicationService
     {
-        Task CreateAsync(CreateQueryDto input);
+        Task<string> CreateAsync(CreateQueryDto input);
     }
 }
