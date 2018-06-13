@@ -100,6 +100,83 @@ export class QuestionServiceProxy {
 }
 
 @Injectable()
+export class ReportIllegalServiceProxy {
+    private http: HttpClient;
+    private baseUrl: string;
+    protected jsonParseReviver: ((key: string, value: any) => any) | undefined = undefined;
+
+    constructor(@Inject(HttpClient) http: HttpClient, @Optional() @Inject(API_BASE_URL) baseUrl?: string) {
+        this.http = http;
+        this.baseUrl = baseUrl ? baseUrl : "";
+    }
+
+    /**
+ * @input (optional) 
+ * @return Success
+ */
+    submit(input: ReportIllegalInput | null | undefined): Observable<ReportOutput> {
+        let url_ = this.baseUrl + "/api/services/app/ReportIllegalActivity/CreateAsync";
+        url_ = url_.replace(/[?&]$/, "");
+
+        const content_ = JSON.stringify(input);
+
+        let options_: any = {
+            body: content_,
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("post", url_, options_).flatMap((response_: any) => {
+            return this.processCreate(response_);
+        }).catch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processCreate(<any>response_);
+                } catch (e) {
+                    return <Observable<ReportOutput>><any>Observable.throw(e);
+                }
+            } else
+                return <Observable<ReportOutput>><any>Observable.throw(response_);
+        });
+    }
+
+    protected processCreate(response: HttpResponseBase): Observable<ReportOutput> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+                (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); } };
+        if (status === 200) {
+            return blobToText(responseBlob).flatMap(_responseText => {
+                let result200: any = null;
+                let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+                result200 = resultData200 ? ReportOutput.fromJS(resultData200) : new ReportOutput();
+                return Observable.of(result200);
+            });
+        } else if (status === 401) {
+            return blobToText(responseBlob).flatMap(_responseText => {
+                return throwException("A server error occurred.", status, _responseText, _headers);
+            });
+        } else if (status === 403) {
+            return blobToText(responseBlob).flatMap(_responseText => {
+                return throwException("A server error occurred.", status, _responseText, _headers);
+            });
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).flatMap(_responseText => {
+                return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            });
+        }
+        return Observable.of<ReportOutput>(<any>null);
+    }
+}
+
+
+@Injectable()
 export class AccountServiceProxy {
     private http: HttpClient;
     private baseUrl: string;
@@ -3342,6 +3419,108 @@ export class QuestionOutput implements IQuestionOutput {
 }
 
 export interface IQuestionOutput {
+    message: string | undefined;
+}
+
+export class ReportIllegalInput implements IReportIllegalInput {
+    userId: number;
+    userName: string;
+    vesselNo: string;
+    illegalActivityDate: Date;
+    description: string;;
+
+    constructor(data?: IReportIllegalInput) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.userId = data["userId"];
+            this.userName = data["userName"];
+            this.vesselNo = data["vesselNo"];
+            this.illegalActivityDate = data["illegalActivityDate"];
+            this.description = data["description"];
+        }
+    }
+
+    static fromJS(data: any): ReportIllegalInput {
+        data = typeof data === 'object' ? data : {};
+        let result = new ReportIllegalInput();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["userId"] = this.userId;
+        data["userName"] = this.userName;
+        data["vesselNo"] = this.vesselNo;
+        data["illegalActivityDate"] = this.illegalActivityDate;
+        data["description"] = this.description;
+        return data;
+    }
+
+    clone() {
+        const json = this.toJSON();
+        let result = new ReportIllegalInput();
+        result.init(json);
+        return result;
+    }
+}
+
+export interface IReportIllegalInput {
+    userId: number;
+    userName: string;
+    vesselNo: string;
+    illegalActivityDate: Date;
+    description: string;
+}
+
+export class ReportOutput implements IReportOutput {
+    message: string | undefined;
+
+    constructor(data?: IReportOutput) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.message = data["message"];
+        }
+    }
+
+    static fromJS(data: any): ReportOutput {
+        data = typeof data === 'object' ? data : {};
+        let result = new ReportOutput();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["message"] = this.message;
+        return data;
+    }
+
+    clone() {
+        const json = this.toJSON();
+        let result = new ReportOutput();
+        result.init(json);
+        return result;
+    }
+}
+
+export interface IReportOutput {
     message: string | undefined;
 }
 
