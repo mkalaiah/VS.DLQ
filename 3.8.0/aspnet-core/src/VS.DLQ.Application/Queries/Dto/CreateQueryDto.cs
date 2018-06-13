@@ -1,26 +1,24 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using Abp.Domain.Entities;
-using VS.DLQ.Authorization.Users;
+using Abp.AutoMapper;
+using Abp.Application.Services.Dto;
 
-namespace VS.DLQ.Engagement
+namespace VS.DLQ.Queries.Dto
 {
-    [Table("DLQQueries")]
-    public class Query : Entity
-    {   
-        public virtual long UserId { get; protected set; }      
+    [AutoMapTo(typeof(Query))]
+    public class CreateQueryDto : EntityDto<long>
+    {
+        public virtual long UserId { get; protected set; }
 
         [Required]
-        [StringLength(DLQConsts.MaxNameLength)]
         public virtual string UserName { get; set; }
 
         [Required]
+        [EmailAddress]
         public virtual string EmailId { get; set; }
 
         [Required]
         public virtual string Question { get; set; }
-
         public virtual DateTime TimeStamp { get; set; }
 
         public virtual bool IsReplied { get; set; }
@@ -30,3 +28,4 @@ namespace VS.DLQ.Engagement
         public virtual DateTime ResponseTimeStamp { get; set; }
     }
 }
+
