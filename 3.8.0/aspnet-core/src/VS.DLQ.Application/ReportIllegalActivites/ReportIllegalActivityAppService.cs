@@ -15,7 +15,7 @@ namespace VS.DLQ.ReportIllegalActivites
             _reportIllegalActivity = reportIllegalActivity;
         }
 
-        public async Task CreateAsync(CreateReportIllegalActivityDto input)
+        public async Task<string> CreateAsync(CreateReportIllegalActivityDto input)
         {
             if (input == null)
             {
@@ -24,6 +24,12 @@ namespace VS.DLQ.ReportIllegalActivites
 
             var reportIilegalactivity = ObjectMapper.Map<ReportIllegalActivity>(input);
             await _reportIllegalActivity.InsertAsync(reportIilegalactivity);
+
+            return "success";
+
         }
+
+
+
     }
 }

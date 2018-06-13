@@ -1,5 +1,9 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Abp.Application.Services.Dto;
 using Abp.Domain.Repositories;
+using Microsoft.EntityFrameworkCore;
 using VS.DLQ.Engagement;
 using VS.DLQ.Queries.Dto;
 
@@ -26,8 +30,21 @@ namespace VS.DLQ.Queries
             var query = ObjectMapper.Map<Query>(input);
             await _queryRepository.InsertAsync(query);
 
-            return "Successfully Question Inserted";
+            return "success";
         }
+
+        public async Task<ListResultDto<QueryDto>> GetAll()
+        {
+            var queries = await _queryRepository
+                .GetAll()                
+                .OrderByDescending(t => t.TimeStamp)
+                .ToListAsync();
+
+            return new ListResultDto<QueryDto>(
+                ObjectMapper.Map<List<QueryDto>>(queries)
+            );
+        }
+
 
         //protected virtual void CheckErrors(IdentityResult identityResult)
         //{
