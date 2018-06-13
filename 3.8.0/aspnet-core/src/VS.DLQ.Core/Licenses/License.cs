@@ -1,8 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations.Schema;
 using Abp.Domain.Entities;
-using VS.DLQ.LicenseStatuses;
-using VS.DLQ.LicenseTypes;
 
 namespace VS.DLQ.Licenses
 {
