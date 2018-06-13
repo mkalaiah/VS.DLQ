@@ -27,6 +27,11 @@ namespace VS.DLQ.Queries.Dto
         public virtual string Response { get; set; }
 
         public virtual DateTime ResponseTimeStamp { get; set; }
+
+        public CreateQueryDto()
+        {
+            TimeStamp = DateTime.Now;
+        }
     }
 }
 

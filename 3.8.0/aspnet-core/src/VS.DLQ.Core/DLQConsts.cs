@@ -13,6 +13,6 @@
         public const int MaxEntitlementNameLength = 100;
         public const int MaxDescriptionLength = 255;
 
-        public const int MaxURLLength = 100;
+        public const int MaxURLLength = 500;
     }
 }
