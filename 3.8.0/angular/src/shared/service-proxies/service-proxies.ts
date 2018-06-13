@@ -55,11 +55,11 @@ export class QuestionServiceProxy {
         };
 
         return this.http.request("post", url_, options_).flatMap((response_: any) => {
-            return this.processCreate(response_);
+            return this.processSubmit(response_);
         }).catch((response_: any) => {
             if (response_ instanceof HttpResponseBase) {
                 try {
-                    return this.processCreate(<any>response_);
+                    return this.processSubmit(<any>response_);
                 } catch (e) {
                     return <Observable<QuestionOutput>><any>Observable.throw(e);
                 }
@@ -68,7 +68,7 @@ export class QuestionServiceProxy {
         });
     }
 
-    protected processCreate(response: HttpResponseBase): Observable<QuestionOutput> {
+    protected processSubmit(response: HttpResponseBase): Observable<QuestionOutput> {
         const status = response.status;
         const responseBlob =
             response instanceof HttpResponse ? response.body :
@@ -3343,7 +3343,7 @@ export class QuestionInput implements IQuestionInput {
         if (data) {
             this.userId = data["userId"];
             this.userName = data["userName"];
-            this.emailAddress = data["emailAddress"];
+            this.emailAddress = data["emailId"];
             this.question = data["question"];
         }
     }
@@ -3359,7 +3359,7 @@ export class QuestionInput implements IQuestionInput {
         data = typeof data === 'object' ? data : {};
         data["userId"] = this.userId;
         data["userName"] = this.userName;
-        data["emailAddress"] = this.emailAddress;
+        data["emailId"] = this.emailAddress;
         data["question"] = this.question;
         return data;
     }

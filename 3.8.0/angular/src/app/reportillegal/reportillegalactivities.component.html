@@ -4,8 +4,20 @@
             <h4 class="text-center">{{l("Report Illegal Activity")}}</h4>
             <div class="form-group form-float">
                 <div class="form-line">
-                    <input materialInput class="form-control" autoFocus type="text" [(ngModel)]="model.question" name="Name" required maxlength="32" />
-                    <label class="form-label">{{l('Question:')}}</label>
+                    <input materialInput class="form-control" autoFocus type="text" [(ngModel)]="model.vesselNo" name="VesselNo" required maxlength="32" />
+                    <label class="form-label">{{l('Vessel Number:')}}</label>
+                </div>
+            </div>
+            <div class="form-group form-float">
+                <div class="form-line">
+                    <input materialInput class="form-control" autoFocus type="text" [(ngModel)]="model.description" name="Description" required maxlength="32" />
+                    <label class="form-label">{{l('Description:')}}</label>
+                </div>
+            </div>
+            <div class="form-group form-float">
+                <div class="form-line">
+                    <input materialInput class="form-control" autoFocus type="date" [(ngModel)]="model.illegalActivityDate" name="Date" />
+                    <label class="form-label">{{l('Illegal Activity Date:')}}</label>
                 </div>
             </div>
             <div class="form-actions">
