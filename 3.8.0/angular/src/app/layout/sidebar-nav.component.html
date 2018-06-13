@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 ﻿<div class="menu">
+=======
+<div class="menu">
+>>>>>>> 8f91001433374c7ef36ddc6903d0ebd71189008d
     <ul class="list">
         <ng-template ngFor let-menuItem [ngForOf]="menuItems" let-mainMenuItemIndex="index">
             <li *ngIf="showMenuItem(menuItem)" routerLinkActive="active">
@@ -25,6 +29,7 @@
                                 <i *ngIf="subMenuItem.icon" class="material-icons">{{subMenuItem.icon}}</i>
                                 <span>{{subMenuItem.name}}</span>
                             </a>
+<<<<<<< HEAD
                             <!-- Static link (starts with 'http') -->
                             <a href="{{subMenuItem.route}}" class="toggled" target="_blank" *ngIf="!subMenuItem.items.length && subMenuItem.route.indexOf('http') == 0">
                                 <i *ngIf="subMenuItem.icon" class="material-icons">{{subMenuItem.icon}}</i>
@@ -51,6 +56,9 @@
                                     </li>
                                 </ng-template>
                             </ul>
+=======
+                            
+>>>>>>> 8f91001433374c7ef36ddc6903d0ebd71189008d
                         </li>
                     </ng-template>
                 </ul>
