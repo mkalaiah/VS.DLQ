@@ -3,7 +3,7 @@ using Abp.Application.Services.Dto;
 
 namespace VS.DLQ.Rules
 {
-    interface IRuleAppService
+    interface IRulesAppservice
     {
         Task<ListResultDto<RuleDto>> GetAll();
     }

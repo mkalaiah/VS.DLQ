@@ -7,18 +7,18 @@ using Microsoft.EntityFrameworkCore;
 
 namespace VS.DLQ.Rules
 {
-    public class RuleAppService : DLQAppServiceBase, IRuleAppService
+    public class RulesAppService :  DLQAppServiceBase, IRulesAppservice
     {
-        private readonly IRepository<Rule> _ruleRepository;
+        private readonly IRepository<Rule> _rulesRepository;
 
-        public RuleAppService(IRepository<Rule> ruleRepository)
+        public RulesAppService(IRepository<Rule> rulesRepository)
         {
-            _ruleRepository = ruleRepository;
+            _rulesRepository = rulesRepository;
         }
 
         public async Task<ListResultDto<RuleDto>> GetAll()
         {
-            var rules = await _ruleRepository
+            var rules = await _rulesRepository
                 .GetAll()
                 .OrderByDescending(t => t.TimeStamp)
                 .ToListAsync();
