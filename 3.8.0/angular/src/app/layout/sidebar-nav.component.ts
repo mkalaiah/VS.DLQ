@@ -16,12 +16,12 @@ export class SideBarNavComponent extends AppComponentBase {
         new MenuItem(this.l("Users"), "Pages.Users", "people", "/app/users"),
         new MenuItem(this.l("Roles"), "Pages.Roles", "local_offer", "/app/roles"),
         //new MenuItem(this.l("About"), "", "info", "/app/about"),
-        new MenuItem(this.l("Fishing Trip"), "", "menu", "", [
-            new MenuItem("Weather", "", "", ""),
+        new MenuItem(this.l("Fishing Trip"), "", "directions_boat", "", [
+            new MenuItem("Weather", "", "", "/app/home"),
             new MenuItem("Rules", "", "", "/app/rules"),
             new MenuItem("Species", "", "", "/app/species")
         ]),
-        new MenuItem(this.l("Engagement"), "", "menu", "", [
+        new MenuItem(this.l("Engagement"), "", "assignment_ind", "", [
             new MenuItem("Ask a Question", "", "", "/app/question"),
             new MenuItem("Report Illegal Activities", "", "", "/app/reportillegal"),
             new MenuItem("Report Issue", "", "", "/app/reportissue")
