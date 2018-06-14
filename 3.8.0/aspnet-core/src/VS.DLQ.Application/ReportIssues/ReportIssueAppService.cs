@@ -17,15 +17,20 @@ namespace VS.DLQ.ReportIssues
             _reportIssueRepository = reportIssueRepository;
         }
 
-        public async Task CreateAsync(CreateReportIssueDto input)
+        public async Task<string> Create(CreateReportIssueDto input)
         {
+            string returnText = string.Empty;
             if (input == null)
             {
                 throw new System.ArgumentNullException(nameof(input));
             }
-
             var reportIssue = ObjectMapper.Map<ReportIssue>(input);
-            await _reportIssueRepository.InsertAsync(reportIssue);
+            var reportId = await _reportIssueRepository.InsertAndGetIdAsync(reportIssue);
+            if (reportId != 0)
+                returnText = "success";
+            else
+                returnText = "failed";
+            return returnText;
         }
     }
 }

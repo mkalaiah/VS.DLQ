@@ -15,21 +15,23 @@ namespace VS.DLQ.ReportIllegalActivites
             _reportIllegalActivity = reportIllegalActivity;
         }
 
-        public async Task<string> CreateAsync(CreateReportIllegalActivityDto input)
+        public async Task<string> Create(CreateReportIllegalActivityDto input)
         {
+            string returnText = string.Empty;
             if (input == null)
             {
                 throw new System.ArgumentNullException(nameof(input));
             }
 
             var reportIilegalactivity = ObjectMapper.Map<ReportIllegalActivity>(input);
-            await _reportIllegalActivity.InsertAsync(reportIilegalactivity);
 
-            return "success";
+            var reportId = await _reportIllegalActivity.InsertAndGetIdAsync(reportIilegalactivity);
 
+            if (reportId != 0)
+                returnText = "success";
+            else
+                returnText = "failed";
+            return returnText;
         }
-
-
-
     }
 }

@@ -7,6 +7,6 @@ namespace VS.DLQ.ReportIssues
 {
     public interface IReportIssueAppService : IApplicationService
     {
-        Task CreateAsync(CreateReportIssueDto input);
+        Task<string> Create(CreateReportIssueDto input);
     }
 }

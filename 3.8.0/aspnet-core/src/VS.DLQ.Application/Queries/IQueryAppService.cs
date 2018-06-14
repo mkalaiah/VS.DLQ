@@ -7,7 +7,7 @@ namespace VS.DLQ.Queries
 {
     public interface IQueryAppService : IApplicationService
     {
-        Task<string> CreateAsync(CreateQueryDto input);
+        Task<string> Create(CreateQueryDto input);
 
         Task<ListResultDto<QueryDto>> GetAll();
     }
