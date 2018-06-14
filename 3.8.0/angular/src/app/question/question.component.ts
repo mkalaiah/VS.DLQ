@@ -32,7 +32,7 @@ export class QuestionComponent extends AppComponentBase implements AfterViewInit
         this.model.userId = this.appSession.userId;
         this.model.userName = this.appSession.user.name;
         this.model.emailId = this.appSession.user.emailAddress;
-        this._questionService.createAsync(this.model)
+        this._questionService.create(this.model)
             .finally(() => { this.saving = false; })
             .subscribe((result: string) => {
                 if (result.match('success')) {

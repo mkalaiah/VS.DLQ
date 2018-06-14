@@ -31,7 +31,7 @@ export class ReportIllegalComponent extends AppComponentBase implements AfterVie
         this.saving = true;
         this.model.userId = this.appSession.userId;
         this.model.userName = this.appSession.user.name;
-        this._service.createAsync(this.model)
+        this._service.create(this.model)
             .finally(() => { this.saving = false; })
             .subscribe((result: string) => {
                 if (result.match('success')) {

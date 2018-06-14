@@ -230,8 +230,8 @@ export class QueryServiceProxy {
      * @input (optional) 
      * @return Success
      */
-    createAsync(input: CreateQueryDto | null | undefined): Observable<string> {
-        let url_ = this.baseUrl + "/api/services/app/Query/CreateAsync";
+    create(input: CreateQueryDto | null | undefined): Observable<string> {
+        let url_ = this.baseUrl + "/api/services/app/Query/Create";
         url_ = url_.replace(/[?&]$/, "");
 
         const content_ = JSON.stringify(input);
@@ -247,11 +247,11 @@ export class QueryServiceProxy {
         };
 
         return this.http.request("post", url_, options_).flatMap((response_ : any) => {
-            return this.processCreateAsync(response_);
+            return this.processCreate(response_);
         }).catch((response_: any) => {
             if (response_ instanceof HttpResponseBase) {
                 try {
-                    return this.processCreateAsync(<any>response_);
+                    return this.processCreate(<any>response_);
                 } catch (e) {
                     return <Observable<string>><any>Observable.throw(e);
                 }
@@ -260,7 +260,7 @@ export class QueryServiceProxy {
         });
     }
 
-    protected processCreateAsync(response: HttpResponseBase): Observable<string> {
+    protected processCreate(response: HttpResponseBase): Observable<string> {
         const status = response.status;
         const responseBlob = 
             response instanceof HttpResponse ? response.body : 
@@ -350,8 +350,8 @@ export class ReportIllegalActivityServiceProxy {
      * @input (optional) 
      * @return Success
      */
-    createAsync(input: CreateReportIllegalActivityDto | null | undefined): Observable<string> {
-        let url_ = this.baseUrl + "/api/services/app/ReportIllegalActivity/CreateAsync";
+    create(input: CreateReportIllegalActivityDto | null | undefined): Observable<string> {
+        let url_ = this.baseUrl + "/api/services/app/ReportIllegalActivity/Create";
         url_ = url_.replace(/[?&]$/, "");
 
         const content_ = JSON.stringify(input);
@@ -367,11 +367,11 @@ export class ReportIllegalActivityServiceProxy {
         };
 
         return this.http.request("post", url_, options_).flatMap((response_ : any) => {
-            return this.processCreateAsync(response_);
+            return this.processCreate(response_);
         }).catch((response_: any) => {
             if (response_ instanceof HttpResponseBase) {
                 try {
-                    return this.processCreateAsync(<any>response_);
+                    return this.processCreate(<any>response_);
                 } catch (e) {
                     return <Observable<string>><any>Observable.throw(e);
                 }
@@ -380,7 +380,7 @@ export class ReportIllegalActivityServiceProxy {
         });
     }
 
-    protected processCreateAsync(response: HttpResponseBase): Observable<string> {
+    protected processCreate(response: HttpResponseBase): Observable<string> {
         const status = response.status;
         const responseBlob = 
             response instanceof HttpResponse ? response.body : 
@@ -418,8 +418,8 @@ export class ReportIssueServiceProxy {
      * @input (optional) 
      * @return Success
      */
-    createAsync(input: CreateReportIssueDto | null | undefined): Observable<void> {
-        let url_ = this.baseUrl + "/api/services/app/ReportIssue/CreateAsync";
+    create(input: CreateReportIssueDto | null | undefined): Observable<string> {
+        let url_ = this.baseUrl + "/api/services/app/ReportIssue/Create";
         url_ = url_.replace(/[?&]$/, "");
 
         const content_ = JSON.stringify(input);
@@ -430,24 +430,25 @@ export class ReportIssueServiceProxy {
             responseType: "blob",
             headers: new HttpHeaders({
                 "Content-Type": "application/json", 
+                "Accept": "application/json"
             })
         };
 
         return this.http.request("post", url_, options_).flatMap((response_ : any) => {
-            return this.processCreateAsync(response_);
+            return this.processCreate(response_);
         }).catch((response_: any) => {
             if (response_ instanceof HttpResponseBase) {
                 try {
-                    return this.processCreateAsync(<any>response_);
+                    return this.processCreate(<any>response_);
                 } catch (e) {
-                    return <Observable<void>><any>Observable.throw(e);
+                    return <Observable<string>><any>Observable.throw(e);
                 }
             } else
-                return <Observable<void>><any>Observable.throw(response_);
+                return <Observable<string>><any>Observable.throw(response_);
         });
     }
 
-    protected processCreateAsync(response: HttpResponseBase): Observable<void> {
+    protected processCreate(response: HttpResponseBase): Observable<string> {
         const status = response.status;
         const responseBlob = 
             response instanceof HttpResponse ? response.body : 
@@ -456,14 +457,17 @@ export class ReportIssueServiceProxy {
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
         if (status === 200) {
             return blobToText(responseBlob).flatMap(_responseText => {
-            return Observable.of<void>(<any>null);
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 !== undefined ? resultData200 : <any>null;
+            return Observable.of(result200);
             });
         } else if (status !== 200 && status !== 204) {
             return blobToText(responseBlob).flatMap(_responseText => {
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             });
         }
-        return Observable.of<void>(<any>null);
+        return Observable.of<string>(<any>null);
     }
 }
 
