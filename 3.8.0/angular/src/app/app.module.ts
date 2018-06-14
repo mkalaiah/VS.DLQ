@@ -37,6 +37,7 @@ import { QuestionComponent } from '@app/question/question.component';
 import { ReportIllegalComponent } from '@app/reportillegal/reportillegalactivities.component';
 import { ReportIssueComponent } from '@app/reportissue/reportissue.component';
 import { RulesComponent } from '@app/rules/rules.component';
+import { SpeciesComponent } from '@app/species/species.component';
 
 @NgModule({
     declarations: [
@@ -61,7 +62,8 @@ import { RulesComponent } from '@app/rules/rules.component';
         QuestionComponent,
         ReportIllegalComponent,
         ReportIssueComponent,
-        RulesComponent
+        RulesComponent,
+        SpeciesComponent
     ],
     imports: [
         CommonModule,

@@ -1,20 +1,20 @@
 import { Component, Injector, AfterViewInit } from '@angular/core';
 import { AppComponentBase } from '@shared/app-component-base';
 import { appModuleAnimation } from '@shared/animations/routerTransition';
-import { RulesServiceProxy, ListResultDtoOfRuleDto, RuleDto } from '@shared/service-proxies/service-proxies';
+import { SpeciesServiceProxy, ListResultDtoOfSpeciesDto, SpeciesDto } from '@shared/service-proxies/service-proxies';
 
 @Component({
-    templateUrl: './rules.component.html',
+    templateUrl: './species.component.html',
     animations: [appModuleAnimation()]
 })
 
-export class RulesComponent extends AppComponentBase implements AfterViewInit {
+export class SpeciesComponent extends AppComponentBase implements AfterViewInit {
 
-    rules: RuleDto[] = [];
+    species: SpeciesDto[] = [];
 
     constructor(
         injector: Injector,
-        private _service: RulesServiceProxy
+        private _service: SpeciesServiceProxy
     ) {
         super(injector);
     }
@@ -27,8 +27,8 @@ export class RulesComponent extends AppComponentBase implements AfterViewInit {
         this._service.getAll()
             .finally(() => {
             })
-            .subscribe((result: ListResultDtoOfRuleDto) => {
-                this.rules = result.items;
+            .subscribe((result: ListResultDtoOfSpeciesDto) => {
+                this.species = result.items;
             });
     }
 }

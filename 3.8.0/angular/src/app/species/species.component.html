@@ -5,12 +5,12 @@
                 <table class="table table-hover table-striped">
                     <thead>
                         <tr>
-                            <th>{{l("Rules")}}</th>
+                            <th>{{l("Species Information")}}</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let rule of rules">
-                            <td><a href={{rule.url}}>{{rule.name}}</a></td>
+                        <tr *ngFor="let specie of species">
+                            <td><a href={{specie.url}}>{{specie.name}}</a></td>
                         </tr>
                     </tbody>
                 </table>

@@ -860,7 +860,7 @@ export class RoleServiceProxy {
 }
 
 @Injectable()
-export class RuleServiceProxy {
+export class RulesServiceProxy {
     private http: HttpClient;
     private baseUrl: string;
     protected jsonParseReviver: ((key: string, value: any) => any) | undefined = undefined;
@@ -874,7 +874,7 @@ export class RuleServiceProxy {
      * @return Success
      */
     getAll(): Observable<ListResultDtoOfRuleDto> {
-        let url_ = this.baseUrl + "/api/services/app/Rule/GetAll";
+        let url_ = this.baseUrl + "/api/services/app/Rules/GetAll";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {

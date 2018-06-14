@@ -19,7 +19,7 @@ export class SideBarNavComponent extends AppComponentBase {
         new MenuItem(this.l("Fishing Trip"), "", "menu", "", [
             new MenuItem("Weather", "", "", ""),
             new MenuItem("Rules", "", "", "/app/rules"),
-            new MenuItem("Species", "", "", "")
+            new MenuItem("Species", "", "", "/app/species")
         ]),
         new MenuItem(this.l("Engagement"), "", "menu", "", [
             new MenuItem("Ask a Question", "", "", "/app/question"),

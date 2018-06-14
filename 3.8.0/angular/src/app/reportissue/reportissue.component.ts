@@ -32,13 +32,13 @@ export class ReportIssueComponent extends AppComponentBase implements AfterViewI
         this.model.userId = this.appSession.userId;
         this.model.userName = this.appSession.user.name;
         this._service.create(this.model)
-            .finally(() => { this.saving = false; });
-            //.subscribe((result: ReportOutput) => {
-            //    if (result.message.match('success')) {
-            //        this.notify.success(this.l('SuccessfullySubmitted'));
-            //        return;
-            //    }
+            .finally(() => { this.saving = false; })
+            .subscribe((result: string) => {
+                if (result.match('success')) {
+                    this.notify.success(this.l('SuccessfullySubmitted'));
+                    return;
+                }
 
-            //});
+            });
     }
 }
