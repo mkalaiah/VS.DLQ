@@ -14,6 +14,7 @@ using VS.DLQ.UserProfiles;
 using VS.DLQ.UserAddresses;
 using VS.DLQ.SocialStatuses;
 using VS.DLQ.MyTrips;
+using VS.DLQ.WeatherReports;
 
 namespace VS.DLQ.EntityFrameworkCore
 {
@@ -49,8 +50,10 @@ namespace VS.DLQ.EntityFrameworkCore
 
         //Trip Related Entities
         public DbSet<MyTrip> MyTrips { get; set; }
-        public DbSet<MyTripImage> MyTripImages { get; set; }        
-        
+        public DbSet<MyTripImage> MyTripImages { get; set; }
+
+        public DbSet<WeatherReport> WeatherReport { get; set; }
+
         public DLQDbContext(DbContextOptions<DLQDbContext> options)
             : base(options)
         {
