@@ -1,0 +1,16 @@
+<div class="card" [@routerTransition]>
+    <div #cardBody class="body">
+        <form #issueForm="ngForm" method="post" novalidate (ngSubmit)="save()">
+            <h4 class="text-center">{{l("Report Issue")}}</h4>
+            <div class="form-group form-float">
+                <div class="form-line">
+                    <input materialInput class="form-control" autoFocus type="text" [(ngModel)]="model.issueDescription" name="IssueDescription" required maxlength="32" />
+                    <label class="form-label">{{l('Issue Description:')}}</label>
+                </div>
+            </div>
+            <div class="form-actions">
+                <button type="submit" class="btn btn-success" [disabled]="!issueForm.form.valid">{{l("Submit")}}</button>
+            </div>
+        </form>
+    </div>
+</div>

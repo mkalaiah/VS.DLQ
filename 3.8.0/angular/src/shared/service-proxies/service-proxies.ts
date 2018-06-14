@@ -131,11 +131,11 @@ export class ReportIllegalServiceProxy {
         };
 
         return this.http.request("post", url_, options_).flatMap((response_: any) => {
-            return this.processCreate(response_);
+            return this.processSubmit(response_);
         }).catch((response_: any) => {
             if (response_ instanceof HttpResponseBase) {
                 try {
-                    return this.processCreate(<any>response_);
+                    return this.processSubmit(<any>response_);
                 } catch (e) {
                     return <Observable<ReportOutput>><any>Observable.throw(e);
                 }
@@ -144,7 +144,7 @@ export class ReportIllegalServiceProxy {
         });
     }
 
-    protected processCreate(response: HttpResponseBase): Observable<ReportOutput> {
+    protected processSubmit(response: HttpResponseBase): Observable<ReportOutput> {
         const status = response.status;
         const responseBlob =
             response instanceof HttpResponse ? response.body :
@@ -175,6 +175,86 @@ export class ReportIllegalServiceProxy {
     }
 }
 
+@Injectable()
+export class ReportIssueServiceProxy {
+    private http: HttpClient;
+    private baseUrl: string;
+    protected jsonParseReviver: ((key: string, value: any) => any) | undefined = undefined;
+
+    constructor(@Inject(HttpClient) http: HttpClient, @Optional() @Inject(API_BASE_URL) baseUrl?: string) {
+        this.http = http;
+        this.baseUrl = baseUrl ? baseUrl : "";
+    }
+
+    /**
+ * @input (optional) 
+ * @return Success
+ */
+    submit(input: ReportIssueInput | null | undefined): Observable<ReportOutput> {
+        let url_ = this.baseUrl + "/api/services/app/ReportIssue/CreateAsync";
+        url_ = url_.replace(/[?&]$/, "");
+
+        const content_ = JSON.stringify(input);
+
+        let options_: any = {
+            body: content_,
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("post", url_, options_).flatMap((response_: any) => {
+            return this.processSubmit(response_);
+        }).catch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processSubmit(<any>response_);
+                } catch (e) {
+                    return <Observable<ReportOutput>><any>Observable.throw(e);
+                }
+            } else
+                return <Observable<ReportOutput>><any>Observable.throw(response_);
+        });
+    }
+
+    protected processSubmit(response: HttpResponseBase): Observable<ReportOutput> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+                (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); } };
+        if (status === 200) {
+            return blobToText(responseBlob).flatMap(_responseText => {
+                let result200: any = null;
+                let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+                result200 = resultData200 ? ReportOutput.fromJS(resultData200) : new ReportOutput();
+                return Observable.of(result200);
+            });
+        } else if (status === 401) {
+            return blobToText(responseBlob).flatMap(_responseText => {
+                return throwException("A server error occurred.", status, _responseText, _headers);
+            });
+        } else if (status === 403) {
+            return blobToText(responseBlob).flatMap(_responseText => {
+                return throwException("A server error occurred.", status, _responseText, _headers);
+            });
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).flatMap(_responseText => {
+                return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            });
+        }
+        return Observable.of<ReportOutput>(<any>null);
+    }
+}
+
+//@Injectable()
+//export class ReportIssueServiceProxy {
+    
+//}
 
 @Injectable()
 export class AccountServiceProxy {
@@ -3479,6 +3559,57 @@ export interface IReportIllegalInput {
     vesselNo: string;
     illegalActivityDate: Date;
     description: string;
+}
+
+export class ReportIssueInput implements IReportIssueInput {
+    userId: number;
+    userName: string;
+    issueDescription: string;;
+
+    constructor(data?: IReportIssueInput) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.userId = data["userId"];
+            this.userName = data["userName"];
+            this.issueDescription = data["issueDescription"];
+        }
+    }
+
+    static fromJS(data: any): ReportIssueInput {
+        data = typeof data === 'object' ? data : {};
+        let result = new ReportIssueInput();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["userId"] = this.userId;
+        data["userName"] = this.userName;
+        data["issueDescription"] = this.issueDescription;
+        return data;
+    }
+
+    clone() {
+        const json = this.toJSON();
+        let result = new ReportIssueInput();
+        result.init(json);
+        return result;
+    }
+}
+
+export interface IReportIssueInput {
+    userId: number;
+    userName: string;
+    issueDescription: string;
 }
 
 export class ReportOutput implements IReportOutput {
