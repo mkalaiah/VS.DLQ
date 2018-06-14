@@ -3,7 +3,8 @@ import { AppComponentBase } from '@shared/app-component-base';
 import { appModuleAnimation } from '@shared/animations/routerTransition';
 
 @Component({
-    templateUrl: './home.component.html',
+   // templateUrl: './home.component.html',
+    templateUrl: '../about/about.component.html',
     animations: [appModuleAnimation()]
 })
 export class HomeComponent extends AppComponentBase implements AfterViewInit {

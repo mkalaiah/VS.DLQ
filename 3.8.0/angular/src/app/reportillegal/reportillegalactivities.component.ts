@@ -1,8 +1,7 @@
 import { Component, Injector, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
 import { AppComponentBase } from '@shared/app-component-base';
 import { appModuleAnimation } from '@shared/animations/routerTransition';
-import { ReportIllegalServiceProxy, ReportIllegalInput, ReportOutput } from '@shared/service-proxies/service-proxies';
-//import { HttpClient } from '@angular/common/http';
+import { ReportIllegalActivityServiceProxy, CreateReportIllegalActivityDto } from '@shared/service-proxies/service-proxies';
 
 @Component({
     templateUrl: './reportillegalactivities.component.html',
@@ -13,13 +12,13 @@ export class ReportIllegalComponent extends AppComponentBase implements AfterVie
 
     @ViewChild('cardBody') cardBody: ElementRef;
 
-    model: ReportIllegalInput = new ReportIllegalInput();
+    model: CreateReportIllegalActivityDto = new CreateReportIllegalActivityDto();
 
     saving: boolean = false;
 
     constructor(
         injector: Injector,
-        private _questionService: ReportIllegalServiceProxy
+        private _service: ReportIllegalActivityServiceProxy
     ) {
         super(injector);
     }
@@ -32,10 +31,10 @@ export class ReportIllegalComponent extends AppComponentBase implements AfterVie
         this.saving = true;
         this.model.userId = this.appSession.userId;
         this.model.userName = this.appSession.user.name;
-        this._questionService.submit(this.model)
+        this._service.create(this.model)
             .finally(() => { this.saving = false; })
-            .subscribe((result: ReportOutput) => {
-                if (result.message.match('success')) {
+            .subscribe((result: string) => {
+                if (result.match('success')) {
                     this.notify.success(this.l('SuccessfullySubmitted'));
                     return;
                 }
