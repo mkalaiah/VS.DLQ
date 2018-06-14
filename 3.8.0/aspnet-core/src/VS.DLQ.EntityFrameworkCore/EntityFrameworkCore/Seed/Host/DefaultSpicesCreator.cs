@@ -20,7 +20,7 @@ namespace VS.DLQ.EntityFrameworkCore.Seed.Host
 
         public void Create()
         {
-            var defaultSpecies = _context.Rules.IgnoreQueryFilters().FirstOrDefault(e => e.Name.Trim() == Name.Trim());
+            var defaultSpecies = _context.Species.IgnoreQueryFilters().FirstOrDefault(e => e.Name.Trim() == Name.Trim());
             if (defaultSpecies == null)
             {
                 CreateSpecies();
