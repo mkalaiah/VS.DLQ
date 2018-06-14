@@ -9,6 +9,7 @@ import { TenantsComponent } from './tenants/tenants.component';
 import { RolesComponent } from "app/roles/roles.component";
 import { QuestionComponent } from '@app/question/question.component';
 import { ReportIllegalComponent } from '@app/reportillegal/reportillegalactivities.component';
+import { ReportIssueComponent } from '@app/reportissue/reportissue.component';
 
 @NgModule({
     imports: [
@@ -23,7 +24,8 @@ import { ReportIllegalComponent } from '@app/reportillegal/reportillegalactiviti
                     { path: 'tenants', component: TenantsComponent, data: { permission: 'Pages.Tenants' }, canActivate: [AppRouteGuard] },
                     { path: 'about', component: AboutComponent },
                     { path: 'question', component: QuestionComponent },
-                    { path: 'reportillegal', component: ReportIllegalComponent }
+                    { path: 'reportillegal', component: ReportIllegalComponent },
+                    { path: 'reportissue', component: ReportIssueComponent }
                 ]
             }
         ])

@@ -35,6 +35,7 @@ import { RightSideBarComponent } from '@app/layout/right-sidebar.component';
 import { MaterialInput } from '@shared/directives/material-input.directive';
 import { QuestionComponent } from '@app/question/question.component';
 import { ReportIllegalComponent } from '@app/reportillegal/reportillegalactivities.component';
+import { ReportIssueComponent } from '@app/reportissue/reportissue.component';
 
 @NgModule({
     declarations: [
@@ -57,8 +58,8 @@ import { ReportIllegalComponent } from '@app/reportillegal/reportillegalactiviti
         SideBarFooterComponent,
         RightSideBarComponent,
         QuestionComponent,
-        ReportIllegalComponent
-    
+        ReportIllegalComponent,
+        ReportIssueComponent
     ],
     imports: [
         CommonModule,

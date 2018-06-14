@@ -1,25 +1,24 @@
 import { Component, Injector, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
 import { AppComponentBase } from '@shared/app-component-base';
 import { appModuleAnimation } from '@shared/animations/routerTransition';
-import { ReportIllegalServiceProxy, ReportIllegalInput, ReportOutput } from '@shared/service-proxies/service-proxies';
-//import { HttpClient } from '@angular/common/http';
+import { ReportIssueServiceProxy, ReportIssueInput, ReportOutput } from '@shared/service-proxies/service-proxies';
 
 @Component({
-    templateUrl: './reportillegalactivities.component.html',
+    templateUrl: './reportissue.component.html',
     animations: [appModuleAnimation()]
 })
 
-export class ReportIllegalComponent extends AppComponentBase implements AfterViewInit {
+export class ReportIssueComponent extends AppComponentBase implements AfterViewInit {
 
     @ViewChild('cardBody') cardBody: ElementRef;
 
-    model: ReportIllegalInput = new ReportIllegalInput();
+    model: ReportIssueInput = new ReportIssueInput();
 
     saving: boolean = false;
 
     constructor(
         injector: Injector,
-        private _questionService: ReportIllegalServiceProxy
+        private _service: ReportIssueServiceProxy
     ) {
         super(injector);
     }
@@ -32,7 +31,7 @@ export class ReportIllegalComponent extends AppComponentBase implements AfterVie
         this.saving = true;
         this.model.userId = this.appSession.userId;
         this.model.userName = this.appSession.user.name;
-        this._questionService.submit(this.model)
+        this._service.submit(this.model)
             .finally(() => { this.saving = false; })
             .subscribe((result: ReportOutput) => {
                 if (result.message.match('success')) {
