@@ -11,7 +11,7 @@ namespace VS.DLQ.Queries
 {
     //[AbpAuthorize(PermissionNames.Pages_Query)]
     //public class QueryAppService : AsyncCrudAppService<Query, QueryDto, int, PagedResultRequestDto, CreateQueryDto, QueryDto>, IQueryAppService
-    public class QueryAppService : DLQAppServiceBase,  IQueryAppService
+    public class QueryAppService : DLQAppServiceBase, IQueryAppService
     {
         private readonly IRepository<Query> _queryRepository;
 
@@ -20,23 +20,28 @@ namespace VS.DLQ.Queries
             _queryRepository = queryRepository;
         }
 
-        public async Task<string> CreateAsync(CreateQueryDto input)
+        public async Task<string> Create(CreateQueryDto input)
         {
+            string returnText = string.Empty;
             if (input == null)
             {
                 throw new System.ArgumentNullException(nameof(input));
             }
 
             var query = ObjectMapper.Map<Query>(input);
-            await _queryRepository.InsertAsync(query);
+            var queryId = await _queryRepository.InsertAndGetIdAsync(query);
 
-            return "success";
+            if (queryId != 0)
+                returnText = "success";
+            else
+                returnText = "failed";
+            return returnText;
         }
 
         public async Task<ListResultDto<QueryDto>> GetAll()
         {
             var queries = await _queryRepository
-                .GetAll()                
+                .GetAll()
                 .OrderByDescending(t => t.TimeStamp)
                 .ToListAsync();
 

@@ -6,6 +6,6 @@ namespace VS.DLQ.ReportIllegalActivites
 {
     public interface IReportIllegalActivityAppService: IApplicationService
     {
-        Task<string> CreateAsync(CreateReportIllegalActivityDto input);
+        Task<string> Create(CreateReportIllegalActivityDto input);
     }
 }
