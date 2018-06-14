@@ -36,6 +36,7 @@ import { MaterialInput } from '@shared/directives/material-input.directive';
 import { QuestionComponent } from '@app/question/question.component';
 import { ReportIllegalComponent } from '@app/reportillegal/reportillegalactivities.component';
 import { ReportIssueComponent } from '@app/reportissue/reportissue.component';
+import { RulesComponent } from '@app/rules/rules.component';
 
 @NgModule({
     declarations: [
@@ -59,7 +60,8 @@ import { ReportIssueComponent } from '@app/reportissue/reportissue.component';
         RightSideBarComponent,
         QuestionComponent,
         ReportIllegalComponent,
-        ReportIssueComponent
+        ReportIssueComponent,
+        RulesComponent
     ],
     imports: [
         CommonModule,
