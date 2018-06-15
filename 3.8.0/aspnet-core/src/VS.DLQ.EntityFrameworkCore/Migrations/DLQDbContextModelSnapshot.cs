@@ -1200,22 +1200,23 @@ namespace VS.DLQ.Migrations
 
             modelBuilder.Entity("VS.DLQ.Fish.Species", b =>
                 {
+
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasMaxLength(100);
+                        .HasMaxLength(DLQConsts.MaxDescriptionLength);
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasMaxLength(64);
+                        .HasMaxLength(DLQConsts.MaxNameLength);
 
                     b.Property<DateTime>("TimeStamp");
 
                     b.Property<string>("URL")
                         .IsRequired()
-                        .HasMaxLength(100);
+                        .HasMaxLength(DLQConsts.MaxURLLength);
 
                     b.HasKey("Id");
 
@@ -1422,17 +1423,17 @@ namespace VS.DLQ.Migrations
 
                 b.Property<string>("Description")
                     .IsRequired()
-                    .HasMaxLength(100);
+                    .HasMaxLength(DLQConsts.MaxDescriptionLength);
 
                 b.Property<string>("Name")
                     .IsRequired()
-                    .HasMaxLength(64);
+                    .HasMaxLength(DLQConsts.MaxNameLength);
 
                 b.Property<DateTime>("TimeStamp");
 
                 b.Property<string>("URL")
                     .IsRequired()
-                    .HasMaxLength(100);
+                    .HasMaxLength(DLQConsts.MaxURLLength);
 
                 b.HasKey("Id");
 

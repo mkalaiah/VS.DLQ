@@ -15,10 +15,10 @@ namespace VS.DLQ.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Description = table.Column<string>(maxLength: 100, nullable: false),
-                    Name = table.Column<string>(maxLength: 64, nullable: false),
+                    Description = table.Column<string>(maxLength: DLQConsts.MaxDescriptionLength, nullable: false),
+                    Name = table.Column<string>(maxLength: DLQConsts.MaxNameLength, nullable: false),
                     TimeStamp = table.Column<DateTime>(nullable: false),
-                    URL = table.Column<string>(maxLength: 100, nullable: false)
+                    URL = table.Column<string>(maxLength: DLQConsts.MaxURLLength, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -31,10 +31,10 @@ namespace VS.DLQ.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Description = table.Column<string>(maxLength: 100, nullable: false),
-                    Name = table.Column<string>(maxLength: 64, nullable: false),
+                    Description = table.Column<string>(maxLength: DLQConsts.MaxDescriptionLength , nullable: false),
+                    Name = table.Column<string>(maxLength: DLQConsts.MaxNameLength, nullable: false),
                     TimeStamp = table.Column<DateTime>(nullable: false),
-                    URL = table.Column<string>(maxLength: 100, nullable: false)
+                    URL = table.Column<string>(maxLength: DLQConsts.MaxURLLength, nullable: false)
                 },
                 constraints: table =>
                 {
