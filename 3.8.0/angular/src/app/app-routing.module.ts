@@ -11,6 +11,7 @@ import { QuestionComponent } from '@app/question/question.component';
 import { ReportIllegalComponent } from '@app/reportillegal/reportillegalactivities.component';
 import { ReportIssueComponent } from '@app/reportissue/reportissue.component';
 import { RulesComponent } from '@app/rules/rules.component';
+import { SpeciesComponent } from '@app/species/species.component';
 
 @NgModule({
     imports: [
@@ -27,7 +28,8 @@ import { RulesComponent } from '@app/rules/rules.component';
                     { path: 'question', component: QuestionComponent },
                     { path: 'reportillegal', component: ReportIllegalComponent },
                     { path: 'reportissue', component: ReportIssueComponent },
-                    { path: 'rules', component: RulesComponent }
+                    { path: 'rules', component: RulesComponent },
+                    { path: 'species', component: SpeciesComponent }
                 ]
             }
         ])

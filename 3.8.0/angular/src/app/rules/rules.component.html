@@ -1,16 +1,21 @@
-<div class="card" [@routerTransition]>
-    <div #cardBody class="body">
-        <form #questionForm="ngForm" method="post" novalidate (ngSubmit)="save()">
-            <h4 class="text-center">{{l("Rules")}}</h4>
-            <div class="form-group form-float">
-                <div class="form-line">
-                    <input materialInput class="form-control" autoFocus type="text"  />
-                    <label class="form-label">{{l('Question:')}}</label>
-                </div>
+<div class="row clearfix" [@routerTransition]>
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card main-content">
+            <div class="body table-responsive">
+                <table class="table table-hover table-striped">
+                    <thead>
+                        <tr>
+                            <th>{{l("Rules")}}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let rule of rules">
+                            <td><a href={{rule.url}}>{{rule.name}}</a></td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
-            <div class="form-actions">
-                <button type="submit" class="btn btn-success" [disabled]="!questionForm.form.valid">{{l("Submit")}}</button>
-            </div>
-        </form>
+        </div>
     </div>
 </div>
+

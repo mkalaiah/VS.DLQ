@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DLQMobileApp.Views.ReportIllegal"
+             Title="Report Illegal Activity"
+             BackgroundImage="OceanBackground.png">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Illegal Activity Details"
+                HorizontalOptions="CenterAndExpand" Margin="20" TextColor="White" FontSize="20"/>
+            <Label Text="Date"
+                HorizontalOptions="Start" Margin="20,0,20,0" TextColor="White"/>
+            <DatePicker x:Name="DateView" HorizontalOptions="Start" Margin="20,0,20,20" FontSize="20" TextColor="Black" BackgroundColor="White"/>
+
+            <Entry x:Name="VehicleNoField" Placeholder="Vehicle No." Margin="20,0,20,20" WidthRequest="150" TextColor="Black" BackgroundColor="White" FontSize="20"/>
+            <Label Text="Vehicle Description"
+                HorizontalOptions="Start" Margin="20,0,20,0" TextColor="White"/>
+            <Editor HeightRequest="100" Margin="20,0,20,20" WidthRequest="150" TextColor="Black" BackgroundColor="White" FontSize="20" />
+            <Label Text="Illegal Activity Description"
+                HorizontalOptions="Start" Margin="20,0,20,0" TextColor="White"/>
+            <Editor x:Name="DescriptionField" HeightRequest="100" Margin="20,0,20,20" WidthRequest="150" TextColor="Black" BackgroundColor="White" FontSize="20" />
+            <Button HorizontalOptions="CenterAndExpand" Text="Submit" TextColor="White" Clicked="OnSubmitClicked"
+                    FontSize="20" Margin="20,0,20,20" BackgroundColor="DodgerBlue" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DLQMobileApp.LoginView"
+             BackgroundImage="OceanBackground.png">
+    <ContentPage.Content>
+        <StackLayout
+            VerticalOptions="Center"
+            Margin="20">
+            <Label Text="Welcome to Recreational Fishing"
+                HorizontalOptions="CenterAndExpand" TextColor="White" FontSize="20" FontAttributes="Bold"/>
+            <Entry x:Name="UserName" Placeholder="User Name" WidthRequest="150" TextColor="Black" BackgroundColor="White" Margin="0,10,0,0"/>
+            <Entry x:Name="Password" Placeholder="Password" WidthRequest="150" TextColor="Black" BackgroundColor="White" Margin="0,10,0,0" IsPassword="True"/>
+            <Button x:Name="Login" Text="Login" TextColor="White" FontSize="20" BackgroundColor="DodgerBlue" Margin="0,10,0,0" Clicked="OnLoginClicked" />
+
+            <Label Text="OR"
+                HorizontalOptions="CenterAndExpand" TextColor="White" FontSize="16"/>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" >
+                <Image Source="GoogleSignin.png"  Margin="10" Aspect="Fill" HeightRequest="40"  WidthRequest="50"/>
+                <Image Source="FacebookLogin.png"  Margin="10" Aspect="Fill" HeightRequest="50"  WidthRequest="70"/>
+                <Image Source="TwitterSigin.png"  Margin="10" Aspect="Fill" HeightRequest="30"  WidthRequest="50"/>
+            </StackLayout>
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

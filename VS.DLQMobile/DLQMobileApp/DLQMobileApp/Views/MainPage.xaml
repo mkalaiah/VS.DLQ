@@ -1,0 +1,216 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:DLQMobileApp"
+             x:Class="DLQMobileApp.MainPage"
+             NavigationPage.HasNavigationBar="False">
+
+    <ContentPage.Content>
+
+        <Grid
+                RowSpacing="0"
+                ColumnSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Image
+                Grid.Row="0"
+                Aspect="Fill"
+                Source="HomeHeader.png">
+            </Image>
+            <Grid
+                Grid.Row="1"
+                RowSpacing="0"
+                ColumnSpacing="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Image  
+                Grid.Row="0"
+                Grid.Column="0"
+                Aspect="Fill"
+                x:Name="FishTrip"
+                Source="FishingTrip.png">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer 
+                        Tapped="OnFishingTripTap"
+                        NumberOfTapsRequired="1"/>
+                    </Image.GestureRecognizers>
+                </Image>
+                <Image  
+                Grid.Row="0"
+                Grid.Column="1"
+                Aspect="Fill"
+                x:Name="Engagement"
+                Source="Engagement.png">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer 
+                        Tapped="OnEngagementTap"
+                        NumberOfTapsRequired="1"/>
+                    </Image.GestureRecognizers>
+                </Image>
+                <Image  
+                Grid.Row="1"
+                Grid.Column="0"
+                Aspect="Fill"
+                x:Name="UsefulInfo"
+                Source="UsefulInfo.png">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer 
+                        Tapped="OnUsefulInfoTap"
+                        NumberOfTapsRequired="1"/>
+                    </Image.GestureRecognizers>
+                </Image>
+                <Image  
+                Grid.Row="1"
+                Grid.Column="1"
+                Aspect="Fill"
+                x:Name="Gallery"
+                Source="Gallery.png">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer 
+                        Tapped="OnGalleryTap"
+                        NumberOfTapsRequired="1"/>
+                    </Image.GestureRecognizers>
+                </Image>
+                <Image  
+                Grid.Row="2"
+                Grid.Column="0"
+                Aspect="Fill"
+                x:Name="Business"
+                Source="eBusiness.png">
+                </Image>
+                <Image  
+                Grid.Row="2"
+                Grid.Column="1"
+                Aspect="Fill"
+                x:Name="favourites"
+                Source="favourites.png">
+                </Image>
+            </Grid>
+        </Grid>
+        
+        <!--<Grid
+            RowSpacing="0"
+            ColumnSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            --><!-- Header --><!--
+            <RelativeLayout
+                Grid.Row="0">
+                <Image  
+                    Aspect="Fill"
+                    Source="HomeHeader.png"
+                    x:Name="Header"
+                    RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Y,Factor=1,Constant=0}"
+                    RelativeLayout.WidthConstraint="{ConstraintExpression
+            Type=RelativeToParent,Property=Width,Factor=1,Constant=0}"
+                    RelativeLayout.HeightConstraint="{ConstraintExpression
+            Type=RelativeToParent,Property=Height,Factor=1,Constant=0}">
+                </Image>
+                <Image
+                Source="HomeIcon.png"
+                    RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView,
+            ElementName=Header,Property=Height,Factor=0.25,Constant=0}"
+        RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToView,
+            ElementName=Header,Property=X,Factor=0.5,Constant=0}"
+        RelativeLayout.WidthConstraint="{ConstraintExpression
+            Type=RelativeToParent,Property=Width,Factor=1,Constant=0}"
+        RelativeLayout.HeightConstraint="{ConstraintExpression
+            Type=RelativeToParent,Property=Height,Factor=0.5,Constant=0}"/>
+            </RelativeLayout>
+            --><!-- Main Menues-->
+            <!--Fishing Trip --><!--
+            <Image  
+                Grid.Row="1"
+                Aspect="Fill"
+                x:Name="FishingTrip"
+                Source="FishingTrip.png">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer 
+                        Tapped="OnFishingTripTap"
+                        NumberOfTapsRequired="1"/>
+                </Image.GestureRecognizers>
+            </Image>
+            <Grid
+                Grid.Row="2"
+                RowSpacing="0"
+                ColumnSpacing="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Image  
+                Grid.Row="0"
+                Grid.Column="0"
+                Aspect="Fill"
+                x:Name="Engagement"
+                Source="Engagement.png">
+                </Image>
+                <Image  
+                Grid.Row="0"
+                Grid.Column="1"
+                Aspect="Fill"
+                x:Name="UsefulInformation"
+                Source="UsefulInformation.png">
+                </Image>
+                <Image  
+                Grid.Row="1"
+                Grid.Column="0"
+                Aspect="Fill"
+                x:Name="E_Business"
+                Source="E_Business.png">
+                </Image>
+                <Image  
+                Grid.Row="1"
+                Grid.Column="1"
+                Aspect="Fill"
+                x:Name="PhotoGallery"
+                Source="Gallery.png">
+                </Image>
+            </Grid>
+
+            <RelativeLayout
+                Grid.Row="3">
+                <Image  
+                    Aspect="Fill"
+                    Source="HomeFooter.png"
+                    x:Name="Footer"
+                    RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Factor=1,Constant=0}"
+                    RelativeLayout.WidthConstraint="{ConstraintExpression
+            Type=RelativeToParent,Property=Width,Factor=1,Constant=0}"
+                    RelativeLayout.HeightConstraint="{ConstraintExpression
+            Type=RelativeToParent,Property=Height,Factor=1,Constant=0}">
+                </Image>
+                <Image
+                Source="QLDLogo.png"
+                    RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView,
+            ElementName=Footer,Property=Height,Factor=0.25,Constant=0}"
+        RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToView,
+            ElementName=Footer,Property=X,Factor=0.5,Constant=0}"
+        RelativeLayout.WidthConstraint="{ConstraintExpression
+            Type=RelativeToParent,Property=Width,Factor=1,Constant=0}"
+        RelativeLayout.HeightConstraint="{ConstraintExpression
+            Type=RelativeToParent,Property=Height,Factor=0.5,Constant=0}"/>
+            </RelativeLayout>
+        </Grid>-->
+    </ContentPage.Content>
+
+
+</ContentPage>
