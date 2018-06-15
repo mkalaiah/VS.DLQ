@@ -1,9 +1,9 @@
 ﻿using System.Threading.Tasks;
 using VS.DLQ.WeatherReports.Dto;
 
-namespace VS.DLQ.WeatherReports
+namespace VS.DLQ.RWeather
 {
-    interface IWeatherAppService
+    interface IRWeatherAppservice
     {
         Task<WeatherDto> GetWeather(string lat, string lon);
     }

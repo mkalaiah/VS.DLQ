@@ -1,8 +1,10 @@
 ﻿using System;
 using Abp.Application.Services.Dto;
+using Abp.AutoMapper;
 
 namespace VS.DLQ.WeatherReports.Dto
 {
+    [AutoMapTo(typeof(WeatherReport))]
     public class WeatherDto : EntityDto
     {
         public string Title { get; set; }

@@ -16,9 +16,10 @@ using VS.DLQ.EntityFrameworkCore;
 namespace VS.DLQ.Migrations
 {
     [DbContext(typeof(DLQDbContext))]
-    partial class DLQDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180615091341_weather_entity_added")]
+    partial class weather_entity_added
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
