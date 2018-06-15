@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DLQMobileApp.Views.GalleryPage"
+             Title="Gallery">
+    <ContentPage.Content>
+        <ScrollView>
+            <Grid 
+                BackgroundColor="White"
+                RowSpacing="0"
+                ColumnSpacing="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="150"/>
+                    <RowDefinition Height="150"/>
+                    <RowDefinition Height="150"/>
+                    <RowDefinition Height="150"/>
+                    <RowDefinition Height="150"/>
+                    <RowDefinition Height="150"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Image  
+                Grid.Row="0"
+                Grid.Column="0"
+                    BackgroundColor="White"
+                    Margin="5"
+                Aspect="Fill"
+                Source="Fish1.png"/>
+                <Image  
+                Grid.Row="0"
+                Grid.Column="1"
+                    BackgroundColor="White"
+                    Margin="5"
+                Aspect="Fill"
+                Source="Fish2.png"/>
+                <Image  
+                Grid.Row="1"
+                Grid.Column="0"
+                    BackgroundColor="White"
+                    Margin="5"
+                Aspect="Fill"
+                Source="Fish3.png"/>
+                <Image  
+                Grid.Row="1"
+                Grid.Column="1"
+                    BackgroundColor="White"
+                    Margin="5"
+                Aspect="Fill"
+                Source="Fish4.png"/>
+                <Image  
+                Grid.Row="2"
+                Grid.Column="0"
+                    Margin="5"
+                    BackgroundColor="White"
+                Aspect="Fill"
+                Source="Fish5.png"/>
+                <Image  
+                Grid.Row="2"
+                Grid.Column="1"
+                    BackgroundColor="White"
+                Aspect="Fill"
+                Source="Fish6.png"/>
+                <Image  
+                Grid.Row="3"
+                Grid.Column="0"
+                    BackgroundColor="White"
+                Aspect="Fill"
+                    Margin="5"
+                Source="Fish7.png"/>
+                <Image  
+                Grid.Row="3"
+                    Margin="5"
+                Grid.Column="1"
+                    BackgroundColor="White"
+                Aspect="Fill"
+                Source="Fish8.png"/>
+                <Image  
+                Grid.Row="4"
+                Grid.Column="0"
+                    BackgroundColor="White"
+                    Margin="5"
+                Aspect="Fill"
+                Source="Fish9.png"/>
+                <Image  
+                Grid.Row="4"
+                Grid.Column="1"
+                    Margin="5"
+                    BackgroundColor="White"
+                Aspect="Fill"
+                Source="Fish10.png"/>
+                <Image  
+                Grid.Row="5"
+                Grid.Column="0"
+                    BackgroundColor="White"
+                    Margin="5"
+                Aspect="Fill"
+                Source="Fish11.png"/>
+                <Image  
+                Grid.Row="5"
+                Grid.Column="1"
+                    BackgroundColor="White"
+                Aspect="Fill"
+                Source="Fish12.png"/>
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

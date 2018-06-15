@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DLQMobileApp.FishingTripView"
+             BackgroundColor="Transparent"
+             Title="Fishing Trip">
+    <ContentPage.Content>
+        <StackLayout>
+            <!--Fishing Trip Header-->
+            <Image  
+                Aspect="Fill"
+                HeightRequest="150"
+                Source="FishingTrip.png">
+            </Image>
+            <!--Fishing Trip Menues-->
+            <Grid
+                Margin="0,-10,0,0"
+                RowSpacing="0"
+                ColumnSpacing="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Image  
+                Grid.Row="0"
+                Grid.Column="0"
+                Aspect="Fill"
+                Source="Weather.jpg">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer 
+                        Tapped="OnWeatherTap"
+                        NumberOfTapsRequired="1"/>
+                    </Image.GestureRecognizers>
+                </Image>
+                <Image  
+                Grid.Row="0"
+                Grid.Column="1"
+                Aspect="Fill"
+                Source="Rules.jpg">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer 
+                        Tapped="OnRulesTap"
+                        NumberOfTapsRequired="1"/>
+                    </Image.GestureRecognizers>
+                </Image>
+                <Image  
+                Grid.Row="1"
+                Grid.Column="0"
+                Aspect="Fill"
+                Source="FishIdentification.jpg">
+                </Image>
+                <Image  
+                Grid.Row="1"
+                Grid.Column="1"
+                Aspect="Fill"
+                Source="MapClosures.jpg">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer 
+                        Tapped="OnMapTap"
+                        NumberOfTapsRequired="1"/>
+                    </Image.GestureRecognizers>
+                </Image>
+                <Image  
+                Grid.Row="2"
+                Grid.Column="0"
+                Aspect="Fill"
+                Source="SpeciesInformation.jpg">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer 
+                        Tapped="OnSpeciesInfoTap"
+                        NumberOfTapsRequired="1"/>
+                    </Image.GestureRecognizers>
+                </Image>
+                <Image  
+                Grid.Row="2"
+                Grid.Column="1"
+                Aspect="Fill"
+                Source="ShareTripInfo.jpg">
+                </Image>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
