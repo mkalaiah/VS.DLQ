@@ -3,3 +3,11 @@
 ################################################################################
 
 /3.8.0/angular/VS.DLQ.AngularUI.csproj.user
+/VS.DLQMobile/DLQMobileApp/DLQMobileApp.iOS/obj
+/VS.DLQMobile/DLQMobileApp/DLQMobileApp/obj
+/VS.DLQMobile/.vs/config
+/VS.DLQMobile/DLQMobileApp/DLQMobileApp/bin/Debug/netstandard2.0
+/VS.DLQMobile/DLQMobileApp/DLQMobileApp.Android/bin/Debug
+/VS.DLQMobile/DLQMobileApp/DLQMobileApp.Android/obj/Debug/android
+/VS.DLQMobile/DLQMobileApp/DLQMobileApp.Android/obj/Debug/linkdst
+/VS.DLQMobile/DLQMobileApp/DLQMobileApp.Android/obj/Debug/linksrc

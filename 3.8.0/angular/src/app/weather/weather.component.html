@@ -1,0 +1,45 @@
+<div class="row clearfix" [@routerTransition]>
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card main-content">
+            <div class="body table-responsive">
+                <table class="table table-hover table-striped">
+                    <thead>
+                        <tr>
+                            <th>{{l("Weather Forecast")}}</th>
+                            <th></th>
+                            <th class="col-lg-6 col-md-6 col-sm-6 col-xs-6"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Temperature</td>
+                            <td>{{weatherDto.temperature}}</td>
+                        </tr>
+                        <tr>
+                            <td>Wind</td>
+                            <td>{{weatherDto.wind}}</td>
+                        </tr>
+                        <tr>
+                            <td>Humidity</td>
+                            <td>{{weatherDto.humidity}}</td>
+                        </tr>
+                        <tr>
+                            <td>Visibility</td>
+                            <td>{{weatherDto.visibility}}</td>
+                        </tr>
+                        <tr>
+                            <td>Sunrise</td>
+                            <td>{{weatherDto.sunrise}}</td>
+                        </tr>
+                        <tr>
+                            <td>Sunset</td>
+                            <td>{{weatherDto.sunset}}</td>
+                        </tr>
+                        <tbody>
+
+                        </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

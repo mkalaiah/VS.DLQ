@@ -924,6 +924,76 @@ export class RulesServiceProxy {
 }
 
 @Injectable()
+export class RWeatherServiceProxy {
+    private http: HttpClient;
+    private baseUrl: string;
+    protected jsonParseReviver: ((key: string, value: any) => any) | undefined = undefined;
+
+    constructor(@Inject(HttpClient) http: HttpClient, @Optional() @Inject(API_BASE_URL) baseUrl?: string) {
+        this.http = http;
+        this.baseUrl = baseUrl ? baseUrl : "";
+    }
+
+    /**
+     * @lat (optional) 
+     * @lon (optional) 
+     * @return Success
+     */
+    getWeather(lat: string | null | undefined, lon: string | null | undefined): Observable<WeatherDto> {
+        let url_ = this.baseUrl + "/api/services/app/RWeather/GetWeather?";
+        if (lat !== undefined)
+            url_ += "lat=" + encodeURIComponent("" + lat) + "&"; 
+        if (lon !== undefined)
+            url_ += "lon=" + encodeURIComponent("" + lon) + "&"; 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("get", url_, options_).flatMap((response_ : any) => {
+            return this.processGetWeather(response_);
+        }).catch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetWeather(<any>response_);
+                } catch (e) {
+                    return <Observable<WeatherDto>><any>Observable.throw(e);
+                }
+            } else
+                return <Observable<WeatherDto>><any>Observable.throw(response_);
+        });
+    }
+
+    protected processGetWeather(response: HttpResponseBase): Observable<WeatherDto> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).flatMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 ? WeatherDto.fromJS(resultData200) : new WeatherDto();
+            return Observable.of(result200);
+            });
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).flatMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            });
+        }
+        return Observable.of<WeatherDto>(<any>null);
+    }
+}
+
+@Injectable()
 export class SessionServiceProxy {
     private http: HttpClient;
     private baseUrl: string;
@@ -2975,6 +3045,85 @@ export interface IRuleDto {
     description: string;
     url: string;
     timeStamp: moment.Moment | undefined;
+    id: number | undefined;
+}
+
+export class WeatherDto implements IWeatherDto {
+    title: string | undefined;
+    date: string | undefined;
+    temperature: string | undefined;
+    wind: string | undefined;
+    humidity: string | undefined;
+    visibility: string | undefined;
+    time: moment.Moment | undefined;
+    sunrise: string | undefined;
+    sunset: string | undefined;
+    id: number | undefined;
+
+    constructor(data?: IWeatherDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.title = data["title"];
+            this.date = data["date"];
+            this.temperature = data["temperature"];
+            this.wind = data["wind"];
+            this.humidity = data["humidity"];
+            this.visibility = data["visibility"];
+            this.time = data["time"] ? moment(data["time"].toString()) : <any>undefined;
+            this.sunrise = data["sunrise"];
+            this.sunset = data["sunset"];
+            this.id = data["id"];
+        }
+    }
+
+    static fromJS(data: any): WeatherDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new WeatherDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["title"] = this.title;
+        data["date"] = this.date;
+        data["temperature"] = this.temperature;
+        data["wind"] = this.wind;
+        data["humidity"] = this.humidity;
+        data["visibility"] = this.visibility;
+        data["time"] = this.time ? this.time.toISOString() : <any>undefined;
+        data["sunrise"] = this.sunrise;
+        data["sunset"] = this.sunset;
+        data["id"] = this.id;
+        return data; 
+    }
+
+    clone(): WeatherDto {
+        const json = this.toJSON();
+        let result = new WeatherDto();
+        result.init(json);
+        return result;
+    }
+}
+
+export interface IWeatherDto {
+    title: string | undefined;
+    date: string | undefined;
+    temperature: string | undefined;
+    wind: string | undefined;
+    humidity: string | undefined;
+    visibility: string | undefined;
+    time: moment.Moment | undefined;
+    sunrise: string | undefined;
+    sunset: string | undefined;
     id: number | undefined;
 }
 

@@ -38,6 +38,7 @@ import { ReportIllegalComponent } from '@app/reportillegal/reportillegalactiviti
 import { ReportIssueComponent } from '@app/reportissue/reportissue.component';
 import { RulesComponent } from '@app/rules/rules.component';
 import { SpeciesComponent } from '@app/species/species.component';
+import { WeatherComponent } from '@app/weather/weather.component';
 
 @NgModule({
     declarations: [
@@ -63,7 +64,8 @@ import { SpeciesComponent } from '@app/species/species.component';
         ReportIllegalComponent,
         ReportIssueComponent,
         RulesComponent,
-        SpeciesComponent
+        SpeciesComponent,
+        WeatherComponent
     ],
     imports: [
         CommonModule,

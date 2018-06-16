@@ -12,6 +12,7 @@ import { ReportIllegalComponent } from '@app/reportillegal/reportillegalactiviti
 import { ReportIssueComponent } from '@app/reportissue/reportissue.component';
 import { RulesComponent } from '@app/rules/rules.component';
 import { SpeciesComponent } from '@app/species/species.component';
+import { WeatherComponent } from '@app/weather/weather.component';
 
 @NgModule({
     imports: [
@@ -29,7 +30,8 @@ import { SpeciesComponent } from '@app/species/species.component';
                     { path: 'reportillegal', component: ReportIllegalComponent },
                     { path: 'reportissue', component: ReportIssueComponent },
                     { path: 'rules', component: RulesComponent },
-                    { path: 'species', component: SpeciesComponent }
+                    { path: 'species', component: SpeciesComponent },
+                    { path: 'weather', component: WeatherComponent }
                 ]
             }
         ])
