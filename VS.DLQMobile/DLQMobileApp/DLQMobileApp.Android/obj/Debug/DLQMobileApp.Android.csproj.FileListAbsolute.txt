@@ -139,7 +139,6 @@ C:\Saugat\Projects\QLDFish\VS.DLQ\VS.DLQMobile\DLQMobileApp\DLQMobileApp.Android
 C:\Saugat\Projects\QLDFish\VS.DLQ\VS.DLQMobile\DLQMobileApp\DLQMobileApp.Android\obj\Debug\android\assets\Xamarin.Forms.Core.pdb
 C:\Saugat\Projects\QLDFish\VS.DLQ\VS.DLQMobile\DLQMobileApp\DLQMobileApp.Android\obj\Debug\android\assets\Xamarin.Forms.Xaml.pdb
 C:\Saugat\Projects\QLDFish\VS.DLQ\VS.DLQMobile\DLQMobileApp\DLQMobileApp.Android\bin\Debug\DLQMobileApp.Android.dll
-C:\Saugat\Projects\QLDFish\VS.DLQ\VS.DLQMobile\DLQMobileApp\DLQMobileApp.Android\obj\Debug\linksrc\DLQMobileApp.pdb
 C:\Saugat\Projects\QLDFish\VS.DLQ\VS.DLQMobile\DLQMobileApp\DLQMobileApp.Android\obj\Debug\linksrc\DLQMobileApp.Android.dll.mdb
 C:\Saugat\Projects\QLDFish\VS.DLQ\VS.DLQMobile\DLQMobileApp\DLQMobileApp.Android\obj\Debug\linksrc\FormsViewGroup.dll.mdb
 C:\Saugat\Projects\QLDFish\VS.DLQ\VS.DLQMobile\DLQMobileApp\DLQMobileApp.Android\obj\Debug\linksrc\Xamarin.Forms.Platform.Android.dll.mdb

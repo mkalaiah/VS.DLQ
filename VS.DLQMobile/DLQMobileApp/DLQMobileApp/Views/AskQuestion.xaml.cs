@@ -24,12 +24,12 @@ namespace DLQMobileApp.Views
         {
             Item.Question = QuestionFeild.Text;
             Item.UserName = "testuser";
-            Item.UserId = 3;
+            Item.UserId = 1;
             Item.EmailId = "mamatha.kalaiah@softvision.com";
 
-            viewModels.SubmitQuestion(Item);
+            bool result = await viewModels.SubmitQuestion(Item);
 
-            if(viewModels.SaveSuccess)
+            if(result)
             {
                 await DisplayAlert("", "Question sucessfully submitted", "OK");
             }

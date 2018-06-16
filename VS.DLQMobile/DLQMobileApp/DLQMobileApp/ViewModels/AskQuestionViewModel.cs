@@ -4,6 +4,7 @@ using DLQMobileApp.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace DLQMobileApp.ViewModels
 {
@@ -18,16 +19,16 @@ namespace DLQMobileApp.ViewModels
             _service = ServiceContainer.Resolve<IAskQuestionService>();
         }
 
-        public void SubmitQuestion (CreateQueryDto question)
+        public async Task<bool> SubmitQuestion (CreateQueryDto question)
         {
-            var result = _service.Create(question).Result;
+            var result = await _service.Create(question);
 
             if (result.Equals("success"))
             {
-                SaveSuccess = true;
+               return true;
             } else
             {
-                SaveSuccess = false;
+                return false;
             }
         }
     }
