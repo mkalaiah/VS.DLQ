@@ -30,19 +30,19 @@ namespace DLQMobileApp.Views
         {
             Item.VesselNo = VehicleNoField.Text;
             Item.UserName = "testuser";
-            Item.UserId = 3;
+            Item.UserId = 1;
             Item.Description = DescriptionField.Text;
             Item.IllegalActivityDate = DateView.Date;
 
-            viewModels.SubmitIllegalActivity(Item);
+            bool result = await viewModels.SubmitIllegalActivity(Item);
 
-            if (viewModels.SaveSuccess)
+            if (result)
             {
-                await DisplayAlert("", "Question sucessfully submitted", "OK");
+                await DisplayAlert("", "Illegal Activity sucessfully reported", "OK");
             }
             else
             {
-                await DisplayAlert("", "Question couldnot be submitted", "OK");
+                await DisplayAlert("", "Illegal Activity could not be reported", "OK");
             }
 
             await Navigation.PopAsync();

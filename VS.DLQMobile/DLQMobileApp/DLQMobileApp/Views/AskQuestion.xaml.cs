@@ -35,7 +35,7 @@ namespace DLQMobileApp.Views
             }
             else
             {
-                await DisplayAlert("", "Question couldnot be submitted", "OK");
+                await DisplayAlert("", "Question coul dnot be submitted", "OK");
             }
 
             await Navigation.PopAsync();

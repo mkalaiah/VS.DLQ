@@ -1,6 +1,7 @@
 ﻿using DLQMobileApp.Interfaces;
 using DLQMobileApp.Utilities;
 using DLQMobileApp.Models;
+using System.Threading.Tasks;
 
 namespace DLQMobileApp.ViewModels
 {
@@ -15,16 +16,16 @@ namespace DLQMobileApp.ViewModels
             _service = ServiceContainer.Resolve<IReportIssueService>();
         }
 
-        public void SubmitIssue (CreateReportIssueDto issue)
+        public async Task<bool> SubmitIssue (CreateReportIssueDto issue)
         {
-            var result = _service.Create(issue).Result;
+            var result = await _service.Create(issue);
 
             if(result.Equals("success"))
             {
-                SaveSuccess = true;
+                return true;
             } else
             {
-                SaveSuccess = false;
+                return false;
             }
         }
     }

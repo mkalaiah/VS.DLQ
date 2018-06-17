@@ -1,9 +1,6 @@
 ﻿using DLQMobileApp.Interfaces;
 using DLQMobileApp.Models;
 using DLQMobileApp.Utilities;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace DLQMobileApp.ViewModels

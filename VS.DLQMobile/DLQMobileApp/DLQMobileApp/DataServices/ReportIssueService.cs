@@ -1,6 +1,7 @@
 ﻿using DLQMobileApp.Interfaces;
 using DLQMobileApp.Models;
 using DLQMobileApp.Utilities;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -11,7 +12,8 @@ namespace DLQMobileApp.DataServices
         public async Task<string> Create(CreateReportIssueDto request, CancellationToken cancellationToken = default(CancellationToken))
         {
             string data = await ServiceProxy.GetPostDataAsync("/ReportIssue/Create", request);
-            return ServiceProxy.GetDeserializedDataFromJson<string>(data);
+            Dictionary<string, string> response = ServiceProxy.GetDeserializedDataFromJson<Dictionary<string, string>>(data);
+            return response["result"];
         }
     }
 }

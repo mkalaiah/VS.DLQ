@@ -23,18 +23,18 @@ namespace DLQMobileApp.Views
         private async void OnSubmitClicked(object sender, EventArgs e)
         {
             Item.UserName = "testuser";
-            Item.UserId = 3;
+            Item.UserId = 1;
             Item.IssueDescription = DescriptionField.Text;
 
-            viewModels.SubmitIssue(Item);
+            bool result = await viewModels.SubmitIssue(Item);
 
-            if (viewModels.SaveSuccess)
+            if (result)
             {
-                await DisplayAlert("", "Question sucessfully submitted", "OK");
+                await DisplayAlert("", "Issue sucessfully submitted", "OK");
             }
             else
             {
-                await DisplayAlert("", "Question couldnot be submitted", "OK");
+                await DisplayAlert("", "Issue could not be submitted", "OK");
             }
 
             await Navigation.PopAsync();

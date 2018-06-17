@@ -1,6 +1,7 @@
 ﻿using DLQMobileApp.Interfaces;
 using DLQMobileApp.Utilities;
 using DLQMobileApp.Models;
+using System.Threading.Tasks;
 
 namespace DLQMobileApp.ViewModels
 {
@@ -15,17 +16,17 @@ namespace DLQMobileApp.ViewModels
             _service = ServiceContainer.Resolve<IReportIllegalActivityService>();
         }
 
-        public void SubmitIllegalActivity(CreateReportIllegalActivityDto illegalActivity)
+        public async Task<bool> SubmitIllegalActivity(CreateReportIllegalActivityDto illegalActivity)
         {
-            var result = _service.Create(illegalActivity).Result;
+            var result = await _service.Create(illegalActivity);
 
             if(result.Equals("success"))
             {
-                SaveSuccess = true;
+                return true;
             }
             else
             {
-                SaveSuccess = false;
+                return false;
             }
         }
     }
