@@ -15,9 +15,9 @@ namespace DLQMobileApp.ViewModels
             _service = ServiceContainer.Resolve<IRulesService>();
         }
 
-        public List<RuleDto> GetRules()
+        public async Task<List<RuleDto>> GetRules()
         {
-            var t =  _service.GetAll().Result;
+            var t =  await _service.GetAll();
             return t;
         }
     }

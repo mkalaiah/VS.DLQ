@@ -18,6 +18,7 @@ namespace DLQMobileApp.Views
         public List<SpeciesDto> Items { get; set; } = null;
 
         private ObservableCollection<SpeciesDto> dataItems;
+
         public ObservableCollection<SpeciesDto> DataItems
         {
             get { return dataItems ?? (dataItems = new ObservableCollection<SpeciesDto>()); }
@@ -51,6 +52,7 @@ namespace DLQMobileApp.Views
 
             MyListView.ItemsSource = DataItems;
         }
+
         protected override async void OnAppearing()
         {
             if (dataItems.Count==0)
@@ -61,7 +63,6 @@ namespace DLQMobileApp.Views
             }
             //MyListView.ItemsSource = DataItems;
         }
-
 
 
         async void Handle_ItemTapped(object sender, ItemTappedEventArgs e)

@@ -13,7 +13,7 @@
     <ListView.ItemTemplate>
             <DataTemplate>
                 <ViewCell>
-                    <Label Text="{Binding .}" TextColor="White" FontSize="18" FontAttributes="Bold" Margin="20,10,20,10" />
+                    <Label Text="{Binding Name}" TextColor="White" FontSize="18" FontAttributes="Bold" Margin="20,10,20,10" />
                 </ViewCell>
             </DataTemplate>
     </ListView.ItemTemplate>

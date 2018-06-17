@@ -17,13 +17,24 @@ namespace DLQMobileApp.Views
     {
         public List<RuleDto> Items { get; set; }
 
+        private ObservableCollection<RuleDto> dataItems;
+
+        public ObservableCollection<RuleDto> DataItems
+        {
+            get { return dataItems ?? (dataItems = new ObservableCollection<RuleDto>()); }
+            set
+            {
+                dataItems = value; OnPropertyChanged();
+            }
+        }
+
         private RulesViewModel viewModels = new RulesViewModel();
 
         public RulesPage()
         {
             InitializeComponent();
 
-            Items = viewModels.GetRules();
+            //Items = viewModels.GetRules();
 
             //Items = new ObservableCollection<string>
             //{
@@ -33,8 +44,20 @@ namespace DLQMobileApp.Views
             //    "Size & Possession Limits (Fresh Waters)"
             //};
 
-            MyListView.ItemsSource = Items;
+            MyListView.ItemsSource = DataItems;
         }
+
+        protected override async void OnAppearing()
+        {
+            if (dataItems.Count == 0)
+            {
+                Items = await viewModels.GetRules();
+                foreach (RuleDto rule in Items)
+                    DataItems.Add(rule);
+            }
+            //MyListView.ItemsSource = DataItems;
+        }
+
 
         async void Handle_ItemTapped(object sender, ItemTappedEventArgs e)
         {

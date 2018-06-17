@@ -12,7 +12,9 @@ namespace DLQMobileApp.DataServices
         public async Task<List<RuleDto>> GetAll(CancellationToken cancellationToken = default(CancellationToken))
         {
             string data = await ServiceProxy.GetDataAsync("/Rules/GetAll");
-            return ServiceProxy.GetDeserializedDataFromJson<List<RuleDto>>(data);
+            Dictionary<string, object> response = ServiceProxy.GetDeserializedDataFromJson<Dictionary<string, object>>(data);
+            Dictionary<string, object> resultArray = ServiceProxy.GetDeserializedDataFromJson<Dictionary<string, object>>(response["result"].ToString());
+            return ServiceProxy.GetDeserializedDataFromJson<List<RuleDto>>(resultArray["items"].ToString());
         }
     }
 }

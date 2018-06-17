@@ -47,7 +47,7 @@ namespace DLQMobileApp.ViewModels
                 WeatherObj.Title = (string)results["name"];
                 WeatherObj.Date = DateTime.Now.ToString("dd/MM/yyyy");
                 var degrees = (Convert.ToDouble((string)results["main"]["temp"]) - 32)*5/9;
-                WeatherObj.Temperature = string.Format("{0}\u00B0C", degrees);
+                WeatherObj.Temperature = string.Format("{0:0.00}\u00B0C", degrees);
                 WeatherObj.Wind = (string)results["wind"]["speed"] + " mph";
                 WeatherObj.Humidity = (string)results["main"]["humidity"] + " %";
                 WeatherObj.Visibility = (string)results["weather"][0]["main"];
