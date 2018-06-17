@@ -4,6 +4,7 @@ using DLQMobileApp.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace DLQMobileApp.ViewModels
 {
@@ -16,9 +17,9 @@ namespace DLQMobileApp.ViewModels
             _service = ServiceContainer.Resolve<ISpeciesService>();
         }
 
-        public List<SpeciesDto> GetRules()
+        public async Task<List<SpeciesDto>> GetSpecies()
         {
-            var t = _service.GetAll().Result;
+            var t = await _service.GetAll();
             return t;
         }
     }

@@ -15,7 +15,17 @@ namespace DLQMobileApp.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class SpeciesInfoPage : ContentPage
     {
-        public List<SpeciesDto> Items { get; set; }
+        public List<SpeciesDto> Items { get; set; } = null;
+
+        private ObservableCollection<SpeciesDto> dataItems;
+        public ObservableCollection<SpeciesDto> DataItems
+        {
+            get { return dataItems ?? (dataItems = new ObservableCollection<SpeciesDto>()); }
+            set
+            {
+                dataItems = value; OnPropertyChanged();
+            }
+        }
 
         private SpeciesViewModel viewModels = new SpeciesViewModel();
 
@@ -23,7 +33,7 @@ namespace DLQMobileApp.Views
         {
             InitializeComponent();
 
-            Items = viewModels.GetRules();
+            //Items = viewModels.GetSpecies();
 
             //Items = new ObservableCollection<string>
             //{
@@ -39,8 +49,20 @@ namespace DLQMobileApp.Views
             //    "Longfin eel"
             //};
 
-            MyListView.ItemsSource = Items;
+            MyListView.ItemsSource = DataItems;
         }
+        protected override async void OnAppearing()
+        {
+            if (dataItems.Count==0)
+            {
+                Items = await viewModels.GetSpecies();
+                foreach (SpeciesDto specii in Items)
+                    DataItems.Add(specii);
+            }
+            //MyListView.ItemsSource = DataItems;
+        }
+
+
 
         async void Handle_ItemTapped(object sender, ItemTappedEventArgs e)
         {

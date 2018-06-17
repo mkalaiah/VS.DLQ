@@ -12,7 +12,9 @@ namespace DLQMobileApp.DataServices
         public async Task<List<SpeciesDto>> GetAll(CancellationToken cancellationToken = default(CancellationToken))
         {
             string data = await ServiceProxy.GetDataAsync("/Species/GetAll");
-            return ServiceProxy.GetDeserializedDataFromJson<List<SpeciesDto>>(data);
+            Dictionary<string,object>response = ServiceProxy.GetDeserializedDataFromJson<Dictionary<string, object>>(data);
+            Dictionary<string, object> resultArray = ServiceProxy.GetDeserializedDataFromJson<Dictionary<string, object>>(response["result"].ToString());
+            return ServiceProxy.GetDeserializedDataFromJson <List<SpeciesDto>> (resultArray["items"].ToString());
         }
     }
 }

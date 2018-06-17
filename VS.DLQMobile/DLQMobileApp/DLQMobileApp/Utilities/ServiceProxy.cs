@@ -19,7 +19,7 @@ namespace DLQMobileApp.Utilities
                 {
                     client.DefaultRequestHeaders.Accept.Clear();
                     client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                    client.Timeout = new TimeSpan(0, 0, 0, 0, 50000);
+                    client.Timeout = new TimeSpan(0, 0, 0, 0, 60000);
 
                     var uri = new Uri(string.Concat(API_SERVER_URL, reqUrl));
                     var response = await client.GetAsync(uri);
@@ -47,7 +47,7 @@ namespace DLQMobileApp.Utilities
                 {
                     client.DefaultRequestHeaders.Accept.Clear();
                     client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                    client.Timeout = new TimeSpan(0, 0, 0, 0, 50000);
+                    client.Timeout = new TimeSpan(0, 0, 0, 30, 0);
                     var userReqData = JsonConvert.SerializeObject(requestobj);
                     var httpContent = new StringContent(userReqData);
                     httpContent.Headers.ContentType = new MediaTypeWithQualityHeaderValue("application/json");
